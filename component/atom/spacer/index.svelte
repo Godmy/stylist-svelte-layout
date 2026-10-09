@@ -12,12 +12,7 @@
 </script>
 
 <div
-	class={[
-		'layout-spacer',
-		`layout-spacer--${axis}`,
-		inline && 'layout-spacer--inline',
-		props.class
-	]
+	class={['layout-spacer', `layout-spacer--${axis}`, inline && 'layout-spacer--inline', props.class]
 		.filter(Boolean)
 		.join(' ')}
 	style:--spacer-size={size}

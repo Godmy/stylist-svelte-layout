@@ -51,11 +51,7 @@
 				aria-label={`Grid item ${item.title}`}
 			>
 				<div class="c-sortable-grid__item-content">
-					<BaseIcon
-						name={GripVertical}
-						size={16}
-						class="c-sortable-grid__grip"
-					/>
+					<BaseIcon name={GripVertical} size={16} class="c-sortable-grid__grip" />
 					<div class="c-sortable-grid__item-body">
 						<h3 class="c-sortable-grid__title">{item.title}</h3>
 						{#if item.content}

@@ -1,5 +1,2 @@
 export type ThemeGradientBackgroundDirection =
-	| 'horizontal'
-	| 'vertical'
-	| 'diagonal'
-	| 'reverseDiagonal';
+	'horizontal' | 'vertical' | 'diagonal' | 'reverseDiagonal';

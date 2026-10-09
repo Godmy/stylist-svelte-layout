@@ -4,8 +4,9 @@ import type { BehaviorClickable } from '$stylist/layout/interface/behavior/click
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { TokenColorTone } from '$stylist/theme/type/alias/color-tone';
 
-export interface RecipeClickable
-	extends ComputeIntersectAll<[BehaviorClickable, SlotChildren, HTMLAttributes<HTMLDivElement>]> {
+export interface RecipeClickable extends ComputeIntersectAll<
+	[BehaviorClickable, SlotChildren, HTMLAttributes<HTMLDivElement>]
+> {
 	variant?: TokenColorTone;
 	class?: string;
 }

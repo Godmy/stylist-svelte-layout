@@ -14,7 +14,8 @@
 
 <style>
 	.layout-numbered-step {
-		border-top: var(--numbered-step-rule-width, 2px) solid var(--numbered-step-rule-color, currentColor);
+		border-top: var(--numbered-step-rule-width, 2px) solid
+			var(--numbered-step-rule-color, currentColor);
 		padding-top: 1.2rem;
 		list-style: none;
 	}
