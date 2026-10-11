@@ -62,6 +62,7 @@ export {
 	TOKEN_SHAPE,
 	TOKEN_SKELETON,
 	TOKEN_STACK_DIRECTION,
+	TOKEN_TIER_CONTENT,
 	TOKEN_TRIGGER
 } from './const';
 export type {
@@ -80,6 +81,7 @@ export type {
 	RecordSizeMap,
 	SplitLayoutGap,
 	ThemeGradientBackgroundDirection,
+	TierContent,
 	TokenAlignment,
 	TokenAspectRatio,
 	TokenBackground,

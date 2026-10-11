@@ -11,6 +11,7 @@ export type {
 	OverlayLayoutAlign,
 	SplitLayoutGap,
 	ThemeGradientBackgroundDirection,
+	TierContent,
 	TokenAlignment,
 	TokenAspectRatio,
 	TokenBackground,

@@ -4,11 +4,7 @@ export function createAnimatedExpandableTableRowState(
 	getProps: () => RecipeAnimatedExpandableTableRow
 ) {
 	const props = $derived(getProps());
-	let isExpanded = $state(props.expanded ?? false);
-
-	$effect(() => {
-		isExpanded = props.expanded ?? false;
-	});
+	let isExpanded = $derived(props.expanded ?? false);
 
 	const expandable = $derived(props.expandable !== false);
 	const expandIcon = $derived(props.expandIcon);

@@ -1,5 +1,5 @@
 import type { RecipeContainer } from '$stylist/layout/interface/recipe/container';
-import type { TokenSize } from '$stylist/theme/type/alias/size';
+import type { TokenSize } from '$stylist/design-token/type/alias/size';
 
 export function createContainerState(getProps: () => RecipeContainer) {
 	const props = $derived(getProps());

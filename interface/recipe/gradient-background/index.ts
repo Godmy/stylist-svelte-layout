@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotThemeBorder } from '$stylist/theme/interface/slot/theme-border';
-import type { SlotTypography } from '$stylist/theme/interface/slot/typography';
+import type { SlotTypography } from '$stylist/typography/interface/slot/typography';
 import type { SlotChildren } from '$stylist/theme/interface/slot/children';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { TokenGradient } from '$stylist/layout/type/alias/gradient-mode';

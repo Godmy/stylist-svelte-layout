@@ -3,7 +3,7 @@ import type { SplitLayoutGap } from '$stylist/layout/type/alias/split-layout-gap
 import type { TokenOrientation } from '$stylist/layout/type/alias/orientation';
 import type { RecipeSplitLayout } from '$stylist/layout/interface/recipe/split-layout';
 
-import type { TOKEN_SIZE } from '$stylist/theme/const/array/size';
+import type { TOKEN_SIZE } from '$stylist/design-token/const/array/size';
 export function createSplitLayoutState(getProps: () => RecipeSplitLayout) {
 	const props = $derived(getProps());
 	const direction = $derived<TokenOrientation>(props.direction ?? TOKEN_ORIENTATION[0]);

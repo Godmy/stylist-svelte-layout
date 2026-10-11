@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import { TOKEN_COLOR_TONE } from '$stylist/theme/const/array/color-tone';
+	import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';
 	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import Clickable from './index.svelte';
 

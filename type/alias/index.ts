@@ -24,4 +24,5 @@ export type { TokenShape } from './shape';
 export type { TokenSkeleton } from './skeleton';
 export type { SplitLayoutGap } from './split-layout-gap';
 export type { TokenStackDirection } from './stack-direction';
+export type { TierContent } from './tier';
 export type { TokenTrigger } from './trigger';

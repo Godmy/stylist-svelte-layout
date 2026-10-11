@@ -1,7 +1,7 @@
 import type { RecipeVerticalLayout } from '$stylist/layout/interface/recipe/vertical-layout';
 import type { TokenAlignment } from '$stylist/layout/type/alias/alignment';
 import type { TokenJustification } from '$stylist/layout/type/alias/justification';
-import type { TokenSize } from '$stylist/theme/type/alias/size';
+import type { TokenSize } from '$stylist/design-token/type/alias/size';
 
 export function createVerticalLayoutState(getProps: () => RecipeVerticalLayout) {
 	const props = $derived(getProps());

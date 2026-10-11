@@ -20,4 +20,5 @@ export { TOKEN_SHAPE } from './shape';
 export { TOKEN_SKELETON } from './skeleton';
 export { SPLIT_LAYOUT_GAP } from './split-layout-gap';
 export { TOKEN_STACK_DIRECTION } from './stack-direction';
+export { TOKEN_TIER_CONTENT } from './tier';
 export { TOKEN_TRIGGER } from './trigger';
