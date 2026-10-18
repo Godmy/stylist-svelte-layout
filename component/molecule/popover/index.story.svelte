@@ -1,41 +1,23 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import Popover from './index.svelte';
+	import type { RecipePopover } from '$stylist/layout/interface/recipe/popover';
 
-	const controls: SlotStory[] = [
-		{ name: 'title', type: 'text', defaultValue: 'Team members' },
-		{ name: 'open', type: 'boolean', defaultValue: true },
-		{
-			name: 'position',
-			type: 'select',
-			defaultValue: 'bottom',
-			options: ['top', 'bottom', 'left', 'right']
-		}
-	];
+	// Render of index.story.ts: the trigger and the content are snippet props.
+	let args: RecipePopover = $props();
 </script>
 
-<Story
-	component={Popover}
-	title="Popover"
-	description="Floating contextual panel anchored to a trigger."
-	{controls}
->
-	{#snippet children(values: any)}
-		<Popover title={values.title} open={values.open} position={values.position}>
-			{#snippet trigger()}
-				<button class="_c1">SlotToggle popover</button>
-			{/snippet}
-			{#snippet content()}
-				<ul class="_c2">
-					<li>Ana Trujillo</li>
-					<li>Devon Lane</li>
-					<li>Leslie Alexander</li>
-				</ul>
-			{/snippet}
-		</Popover>
+<Popover {...args}>
+	{#snippet trigger()}
+		<button class="_c1">SlotToggle popover</button>
 	{/snippet}
-</Story>
+	{#snippet content()}
+		<ul class="_c2">
+			<li>Ana Trujillo</li>
+			<li>Devon Lane</li>
+			<li>Leslie Alexander</li>
+		</ul>
+	{/snippet}
+</Popover>
 
 <style>
 	._c1 {

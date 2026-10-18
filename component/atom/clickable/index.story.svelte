@@ -1,27 +1,9 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import Clickable from './index.svelte';
+	import type { RecipeClickable } from '$stylist/layout/interface/recipe/clickable';
 
-	const controls: SlotStory[] = [
-		{
-			name: 'variant',
-			type: 'select',
-			defaultValue: 'default',
-			options: [...TOKEN_COLOR_TONE]
-		},
-		{ name: 'disabled', type: 'boolean', defaultValue: false },
-		{ name: 'hoverEffect', type: 'boolean', defaultValue: true },
-		{ name: 'pressEffect', type: 'boolean', defaultValue: true },
-		{
-			name: 'cursor',
-			type: 'select',
-			defaultValue: 'pointer',
-			options: ['pointer', 'default', 'grab', 'not-allowed']
-		}
-	];
-
+	// Render of index.story.ts: shows which gesture callback fired; the sandbox DomainFilePreview story embeds it as its story preview.
+	let args: RecipeClickable = $props();
 	let eventName = $state('interact with the card');
 	let count = $state(0);
 
@@ -33,42 +15,27 @@
 	}
 </script>
 
-<Story
-	{controls}
-	component={Clickable}
-	title="Clickable"
-	description="Gesture wrapper for click, double click, and context menu interactions."
->
-	{#snippet children(values: any)}
-		<div class="_c1">
-			<Clickable
-				variant={values.variant as any}
-				disabled={Boolean(values.disabled)}
-				hoverEffect={Boolean(values.hoverEffect)}
-				pressEffect={Boolean(values.pressEffect)}
-				cursor={values.cursor as any}
-				onClick={() => handleEvent('click')}
-				onDblClick={() => handleEvent('double click')}
-				onContextMenu={(event) => {
-					event.preventDefault();
-					handleEvent('context menu');
-				}}
-				onMouseDown={() => handleEvent('mouse down')}
-				onMouseUp={() => handleEvent('mouse up')}
-				onMouseEnter={() => handleEvent('mouse enter')}
-				onMouseLeave={() => handleEvent('mouse leave')}
-			>
-				{#snippet children()}
-					<div class="_c2" data-variant={values.variant}>
-						<span class="_c3">Interactive story card</span>
-						<strong class="_c4">{count}</strong>
-					</div>
-				{/snippet}
-			</Clickable>
-			<p class="_c5">Last event: {eventName}</p>
+<div class="_c1">
+	<Clickable
+		{...args}
+		onClick={() => handleEvent('click')}
+		onDblClick={() => handleEvent('double click')}
+		onContextMenu={(event) => {
+			event.preventDefault();
+			handleEvent('context menu');
+		}}
+		onMouseDown={() => handleEvent('mouse down')}
+		onMouseUp={() => handleEvent('mouse up')}
+		onMouseEnter={() => handleEvent('mouse enter')}
+		onMouseLeave={() => handleEvent('mouse leave')}
+	>
+		<div class="_c2" data-variant={args.variant}>
+			<span class="_c3">Interactive story card</span>
+			<strong class="_c4">{count}</strong>
 		</div>
-	{/snippet}
-</Story>
+	</Clickable>
+	<p class="_c5">Last event: {eventName}</p>
+</div>
 
 <style>
 	._c1 {
