@@ -1,45 +1,22 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import ContainerQuery from './index.svelte';
+	import type { RecipeContainerQuery } from '$stylist/layout/interface/recipe/container-query';
 
-	const controls: SlotStory[] = [
-		{
-			name: 'containerType',
-			type: 'select',
-			defaultValue: 'inline-size',
-			options: ['inline-size', 'size', 'normal']
-		},
-		{ name: 'containerName', type: 'text', defaultValue: '' }
-	];
+	// Render of index.story.ts: the children need @container rules to show the query breakpoint.
+	let args: Partial<RecipeContainerQuery> = $props();
 </script>
 
-<Story
-	component={ContainerQuery}
-	title="ContainerQuery"
-	description="Establishes a CSS container context for @container query breakpoints in child components."
-	{controls}
->
-	{#snippet children(values: any)}
-		<!--
-			Resize this story panel to see the container query in action.
-			@sm: applies when container width >= 640px
-		-->
-		<ContainerQuery
-			containerType={values.containerType}
-			containerName={values.containerName || undefined}
-			class="_c1"
-		>
-			{#snippet children()}
-				<div class="_c2">Resize me — this text changes style when container ≥ 640px</div>
-				<div class="_c3">
-					<div class="_c4">Panel A</div>
-					<div class="_c5">Panel B</div>
-				</div>
-			{/snippet}
-		</ContainerQuery>
-	{/snippet}
-</Story>
+<!--
+	Resize this story panel to see the container query in action.
+	@sm: applies when container width >= 640px
+-->
+<ContainerQuery {...args} containerName={args.containerName || undefined} class="_c1">
+	<div class="_c2">Resize me — this text changes style when container ≥ 640px</div>
+	<div class="_c3">
+		<div class="_c4">Panel A</div>
+		<div class="_c5">Panel B</div>
+	</div>
+</ContainerQuery>
 
 <style>
 	:global(._c1) {

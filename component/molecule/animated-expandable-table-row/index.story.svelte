@@ -1,41 +1,22 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import AnimatedExpandableTableRow from './index.svelte';
+	import type { RecipeAnimatedExpandableTableRow } from '$stylist/layout/interface/recipe/animated-expandable-table-row';
 
-	const controls: SlotStory[] = [
-		{ name: 'expanded', type: 'boolean', defaultValue: false },
-		{ name: 'expandable', type: 'boolean', defaultValue: true },
-		{ name: 'colspan', type: 'number', defaultValue: 3, min: 2, max: 6, step: 1 }
-	];
+	// Render of index.story.ts: the row needs a table parent and the required `details` snippet.
+	let args: Partial<RecipeAnimatedExpandableTableRow> = $props();
 </script>
 
-<Story
-	component={AnimatedExpandableTableRow}
-	title="AnimatedExpandableTableRow"
-	description="Expandable row pattern for tabular details."
-	{controls}
->
-	{#snippet children(values: any)}
-		<table class="_c1">
-			<tbody>
-				<AnimatedExpandableTableRow
-					expanded={values.expanded}
-					expandable={values.expandable}
-					colspan={values.colspan}
-				>
-					{#snippet children()}
-						<td class="_c2">INV-1042</td>
-						<td class="_c2">Paid</td>
-					{/snippet}
-					{#snippet details()}
-						<div class="_c3">Paid via corporate card on 2026-02-20.</div>
-					{/snippet}
-				</AnimatedExpandableTableRow>
-			</tbody>
-		</table>
-	{/snippet}
-</Story>
+<table class="_c1">
+	<tbody>
+		<AnimatedExpandableTableRow {...args}>
+			<td class="_c2">INV-1042</td>
+			<td class="_c2">Paid</td>
+			{#snippet details()}
+				<div class="_c3">Paid via corporate card on 2026-02-20.</div>
+			{/snippet}
+		</AnimatedExpandableTableRow>
+	</tbody>
+</table>
 
 <style>
 	._c1 {

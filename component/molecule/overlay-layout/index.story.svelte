@@ -1,54 +1,24 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import OverlayLayout from './index.svelte';
+	import type { RecipeOverlayLayout } from '$stylist/layout/interface/recipe/overlay-layout';
 
-	const controls: SlotStory[] = [
-		{
-			name: 'overlayAlign',
-			type: 'select',
-			defaultValue: 'bottom-right',
-			options: [
-				'top-left',
-				'top-center',
-				'top-right',
-				'center-left',
-				'center',
-				'center-right',
-				'bottom-left',
-				'bottom-center',
-				'bottom-right',
-				'fill'
-			]
-		},
-		{ name: 'overlayPointerEvents', type: 'boolean', defaultValue: true }
-	];
+	// Render of index.story.ts: the base element and the overlay are snippet props.
+	let args: RecipeOverlayLayout = $props();
 </script>
 
-<Story
-	component={OverlayLayout}
-	title="OverlayLayout"
-	description="Stacks absolute-positioned overlay layers on top of a base element."
-	{controls}
->
-	{#snippet children(values: any)}
-		<OverlayLayout
-			overlayAlign={values.overlayAlign}
-			overlayPointerEvents={values.overlayPointerEvents}
-			class="_c1"
-		>
-			{#snippet base()}
-				<div class="_c2"></div>
-			{/snippet}
-			{#snippet overlay()}
-				<div class="_c3">Overlay</div>
-			{/snippet}
-		</OverlayLayout>
-	{/snippet}
-</Story>
+<div class="_c0">
+	<OverlayLayout {...args} class="_c1">
+		{#snippet base()}
+			<div class="_c2"></div>
+		{/snippet}
+		{#snippet overlay()}
+			<div class="_c3">Overlay</div>
+		{/snippet}
+	</OverlayLayout>
+</div>
 
 <style>
-	:global(._c1) {
+	._c0 > :global(._c1) {
 		height: 12rem;
 		width: 100%;
 	}

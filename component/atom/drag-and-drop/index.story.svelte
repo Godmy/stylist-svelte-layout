@@ -1,48 +1,13 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
 	import DragAndDrop from './index.svelte';
+	import type { RecipeDragAndDrop } from '$stylist/layout/interface/recipe/drag-and-drop';
 
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
-
-	const controls: SlotStory[] = [
-		{
-			name: 'draggable',
-			type: 'boolean',
-			defaultValue: true
-		},
-		{
-			name: 'dropzone',
-			type: 'boolean',
-			defaultValue: false
-		},
-		{
-			name: 'disabled',
-			type: 'boolean',
-			defaultValue: false
-		},
-		{
-			name: 'showDragHandle',
-			type: 'boolean',
-			defaultValue: true
-		},
-		{
-			name: 'dragCursor',
-			type: 'select',
-			options: ['grab', 'grabbing', 'move', 'default'],
-			defaultValue: 'grab'
-		},
-		{
-			name: 'variant',
-			type: 'select',
-			options: ['default', 'primary', 'secondary', 'success', 'warning', 'danger'],
-			defaultValue: 'default'
-		}
-	];
-
+	// Render of index.story.ts: a drag source and a drop zone work together and log their events.
+	let args: RecipeDragAndDrop = $props();
 	let dragEvents = $state<string[]>([]);
-	let droppedData = $state<any>(null);
+	let droppedData = $state<unknown>(null);
 
-	function logEvent(name: string, data?: any) {
+	function logEvent(name: string, data?: unknown) {
 		const timestamp = new Date().toLocaleTimeString();
 		dragEvents = [
 			`${timestamp} - ${name}${data ? ': ' + JSON.stringify(data) : ''}`,
@@ -51,72 +16,57 @@
 	}
 </script>
 
-<Story
-	{controls}
-	component={DragAndDrop}
-	title="Drag-and-Drop Component"
-	description="Атом для перетаскивания элементов и зон сброса"
->
-	{#snippet children(values: any)}
-		<div class="_c1">
-			<div class="_c2">
-				<!-- Draggable item -->
-				<DragAndDrop
-					{...values}
-					draggable={values.draggable}
-					dropzone={false}
-					class="_c3"
-					dragData={{ source: 'draggable-item', timestamp: Date.now() }}
-					onDragStart={() => logEvent('dragStart')}
-					onDragEnd={() => logEvent('dragEnd')}
-				>
-					{#snippet children()}
-						<div class="_c4">
-							<p class="_c5">📦 Перетащи меня</p>
-							<p class="_c6 _c-muted">Drag me to the drop zone</p>
-						</div>
-					{/snippet}
-				</DragAndDrop>
-
-				<!-- Drop zone -->
-				<DragAndDrop
-					{...values}
-					draggable={false}
-					dropzone={true}
-					class="_c7"
-					onDrop={(e: any) => {
-						const data = e.dragData;
-						droppedData = data;
-						logEvent('drop', data);
-					}}
-					onDragEnter={() => logEvent('dragEnter')}
-					onDragLeave={() => logEvent('dragLeave')}
-				>
-					{#snippet children()}
-						<div class="_c4">
-							<p class="_c5">📥 Зона сброса</p>
-							{#if droppedData}
-								<p class="_c8 _c-muted">
-									Последние данные: {JSON.stringify(droppedData)}
-								</p>
-							{/if}
-						</div>
-					{/snippet}
-				</DragAndDrop>
+<div class="_c1">
+	<div class="_c2">
+		<!-- Draggable item -->
+		<DragAndDrop
+			{...args}
+			dropzone={false}
+			class="_c3"
+			dragData={{ source: 'draggable-item', timestamp: Date.now() }}
+			onDragStart={() => logEvent('dragStart')}
+			onDragEnd={() => logEvent('dragEnd')}
+		>
+			<div class="_c4">
+				<p class="_c5">📦 Перетащи меня</p>
+				<p class="_c6 _c-muted">Drag me to the drop zone</p>
 			</div>
+		</DragAndDrop>
 
-			<!-- Event log -->
-			<div class="_c9">
-				<p class="_c10">События:</p>
-				<ul class="_c11 _c-muted">
-					{#each dragEvents as event}
-						<li>{event}</li>
-					{/each}
-				</ul>
+		<!-- Drop zone -->
+		<DragAndDrop
+			{...args}
+			draggable={false}
+			dropzone={true}
+			class="_c7"
+			onDrop={(event: DragEvent & { dragData?: unknown }) => {
+				droppedData = event.dragData;
+				logEvent('drop', event.dragData);
+			}}
+			onDragEnter={() => logEvent('dragEnter')}
+			onDragLeave={() => logEvent('dragLeave')}
+		>
+			<div class="_c4">
+				<p class="_c5">📥 Зона сброса</p>
+				{#if droppedData}
+					<p class="_c8 _c-muted">
+						Последние данные: {JSON.stringify(droppedData)}
+					</p>
+				{/if}
 			</div>
-		</div>
-	{/snippet}
-</Story>
+		</DragAndDrop>
+	</div>
+
+	<!-- Event log -->
+	<div class="_c9">
+		<p class="_c10">События:</p>
+		<ul class="_c11 _c-muted">
+			{#each dragEvents as event, index (index)}
+				<li>{event}</li>
+			{/each}
+		</ul>
+	</div>
+</div>
 
 <style>
 	._c1 {
@@ -143,7 +93,7 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 1rem;
 	}
-	._c3 {
+	._c2 > :global(._c3) {
 		border-radius: 0.5rem;
 		background-color: var(--color-background-secondary);
 		padding: 1.5rem;
@@ -159,7 +109,7 @@
 		font-size: 0.75rem;
 		line-height: 1rem;
 	}
-	._c7 {
+	._c2 > :global(._c7) {
 		border-radius: 0.5rem;
 		border-width: 2px;
 		border-style: dashed;
