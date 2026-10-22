@@ -1,4 +1,4 @@
-import GridLayout from './index.svelte';
+import GridLayout from '$stylist/layout/component/atom/grid-layout/index.svelte';
 import type { RecipeGridLayout } from '$stylist/layout/interface/recipe/grid-layout';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';

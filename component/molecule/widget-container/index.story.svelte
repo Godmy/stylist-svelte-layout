@@ -1,5 +1,5 @@
 <script lang="ts">
-	import WidgetContainer from './index.svelte';
+	import WidgetContainer from '$stylist/layout/component/molecule/widget-container/index.svelte';
 	import type { RecipeWidgetContainer } from '$stylist/layout/interface/recipe/widget-container';
 
 	// Render of index.story.ts: the widget body is a snippet prop.

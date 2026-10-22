@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AnimatedExpandableTableRow from './index.svelte';
+	import AnimatedExpandableTableRow from '$stylist/layout/component/molecule/animated-expandable-table-row/index.svelte';
 	import type { RecipeAnimatedExpandableTableRow } from '$stylist/layout/interface/recipe/animated-expandable-table-row';
 
 	// Render of index.story.ts: the row needs a table parent and the required `details` snippet.

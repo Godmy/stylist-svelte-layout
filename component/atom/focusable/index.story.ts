@@ -1,4 +1,4 @@
-import Focusable from './index.svelte';
+import Focusable from '$stylist/layout/component/atom/focusable/index.svelte';
 import type { RecipeFocusable } from '$stylist/layout/interface/recipe/focusable';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

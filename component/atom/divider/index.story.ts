@@ -1,4 +1,4 @@
-import Divider from './index.svelte';
+import Divider from '$stylist/layout/component/atom/divider/index.svelte';
 import type { RecipeDivider } from '$stylist/layout/interface/recipe/divider';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';

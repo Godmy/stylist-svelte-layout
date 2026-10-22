@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeBackground } from '$stylist/layout/interface/recipe/background';
-	import createBackgroundState from './state.svelte';
+	import createBackgroundState from '$stylist/layout/component/atom/background/state.svelte';
 
 	let props: RecipeBackground = $props();
 	const state = createBackgroundState(() => props);

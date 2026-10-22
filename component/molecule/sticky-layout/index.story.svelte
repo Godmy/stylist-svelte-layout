@@ -1,5 +1,5 @@
 <script lang="ts">
-	import StickyLayout from './index.svelte';
+	import StickyLayout from '$stylist/layout/component/molecule/sticky-layout/index.svelte';
 	import type { RecipeStickyLayout } from '$stylist/layout/interface/recipe/sticky-layout';
 
 	// Render of index.story.ts: the header and footer are snippet props around a scroll list.

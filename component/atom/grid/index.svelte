@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeGridSvg } from '$stylist/layout/interface/recipe/grid-svg';
-	import stateFn from './state.svelte';
+	import stateFn from '$stylist/layout/component/atom/grid/state.svelte';
 
 	let props: RecipeGridSvg = $props();
 	const state = stateFn(() => props);

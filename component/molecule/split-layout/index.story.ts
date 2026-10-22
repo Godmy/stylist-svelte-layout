@@ -1,4 +1,4 @@
-import SplitLayout from './index.svelte';
+import SplitLayout from '$stylist/layout/component/molecule/split-layout/index.svelte';
 import type { RecipeSplitLayout } from '$stylist/layout/interface/recipe/split-layout';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';

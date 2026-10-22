@@ -1,4 +1,4 @@
-import NumberedStepGrid from './index.svelte';
+import NumberedStepGrid from '$stylist/layout/component/molecule/numbered-step-grid/index.svelte';
 import type { RecipeNumberedStepGrid } from '$stylist/layout/interface/recipe/numbered-step-grid';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

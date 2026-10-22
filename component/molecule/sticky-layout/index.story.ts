@@ -1,4 +1,4 @@
-import StickyLayout from './index.svelte';
+import StickyLayout from '$stylist/layout/component/molecule/sticky-layout/index.svelte';
 import type { RecipeStickyLayout } from '$stylist/layout/interface/recipe/sticky-layout';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

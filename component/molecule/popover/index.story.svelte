@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Popover from './index.svelte';
+	import Popover from '$stylist/layout/component/molecule/popover/index.svelte';
 	import type { RecipePopover } from '$stylist/layout/interface/recipe/popover';
 
 	// Render of index.story.ts: the trigger and the content are snippet props.

@@ -1,4 +1,4 @@
-import Background from './index.svelte';
+import Background from '$stylist/layout/component/atom/background/index.svelte';
 import type { RecipeBackground } from '$stylist/layout/interface/recipe/background';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_BACKGROUND } from '$stylist/layout/const/array/background';

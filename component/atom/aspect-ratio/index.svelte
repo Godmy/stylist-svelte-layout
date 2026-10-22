@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeAspectRatio } from '$stylist/layout/interface/recipe/aspect-ratio';
-	import createAspectRatioState from './state.svelte';
+	import createAspectRatioState from '$stylist/layout/component/atom/aspect-ratio/state.svelte';
 
 	let props: RecipeAspectRatio = $props();
 	const state = createAspectRatioState(() => props);

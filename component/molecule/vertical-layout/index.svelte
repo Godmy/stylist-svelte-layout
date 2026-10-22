@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeVerticalLayout } from '$stylist/layout/interface/recipe/vertical-layout';
-	import createVerticalLayoutState from './state.svelte';
+	import createVerticalLayoutState from '$stylist/layout/component/molecule/vertical-layout/state.svelte';
 
 	let props: RecipeVerticalLayout = $props();
 	const state = createVerticalLayoutState(() => props);

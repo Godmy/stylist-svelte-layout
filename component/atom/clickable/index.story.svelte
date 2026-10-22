@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Clickable from './index.svelte';
+	import Clickable from '$stylist/layout/component/atom/clickable/index.svelte';
 	import type { RecipeClickable } from '$stylist/layout/interface/recipe/clickable';
 
 	// Render of index.story.ts: shows which gesture callback fired; the sandbox DomainFilePreview story embeds it as its story preview.

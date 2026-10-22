@@ -1,4 +1,4 @@
-import AspectRatio from './index.svelte';
+import AspectRatio from '$stylist/layout/component/atom/aspect-ratio/index.svelte';
 import type { RecipeAspectRatio } from '$stylist/layout/interface/recipe/aspect-ratio';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ASPECT_RATIO } from '$stylist/layout/const/map/aspect-ratio';

@@ -1,4 +1,4 @@
-import Clickable from './index.svelte';
+import Clickable from '$stylist/layout/component/atom/clickable/index.svelte';
 import type { RecipeClickable } from '$stylist/layout/interface/recipe/clickable';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';

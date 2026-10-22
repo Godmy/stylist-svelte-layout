@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SplitLayout from './index.svelte';
+	import SplitLayout from '$stylist/layout/component/molecule/split-layout/index.svelte';
 	import type { RecipeSplitLayout } from '$stylist/layout/interface/recipe/split-layout';
 
 	// Render of index.story.ts: the primary and secondary panes are snippet props.

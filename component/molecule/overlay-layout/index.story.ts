@@ -1,4 +1,4 @@
-import OverlayLayout from './index.svelte';
+import OverlayLayout from '$stylist/layout/component/molecule/overlay-layout/index.svelte';
 import type { RecipeOverlayLayout } from '$stylist/layout/interface/recipe/overlay-layout';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import Grid from './index.svelte';
+import Grid from '$stylist/layout/component/molecule/grid/index.svelte';
 import type { RecipeGrid } from '$stylist/layout/interface/recipe/grid';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { SPLIT_LAYOUT_GAP } from '$stylist/layout/const/array/split-layout-gap';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
-	import createWidgetContainerState from './state.svelte';
+	import createWidgetContainerState from '$stylist/layout/component/molecule/widget-container/state.svelte';
 	import type { RecipeWidgetContainer } from '$stylist/layout/interface/recipe/widget-container';
 
 	const GripVertical = 'grip-vertical';

@@ -1,4 +1,4 @@
-import Separator from './index.svelte';
+import Separator from '$stylist/layout/component/atom/separator/index.svelte';
 import type { RecipeSeparator } from '$stylist/layout/interface/recipe/separator';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';

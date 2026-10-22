@@ -1,4 +1,4 @@
-import NumberedStep from './index.svelte';
+import NumberedStep from '$stylist/layout/component/atom/numbered-step/index.svelte';
 import type { RecipeNumberedStep } from '$stylist/layout/interface/recipe/numbered-step';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import ContainerQuery from './index.svelte';
+import ContainerQuery from '$stylist/layout/component/molecule/container-query/index.svelte';
 import type { RecipeContainerQuery } from '$stylist/layout/interface/recipe/container-query';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { CONTAINER_QUERY_TYPE } from '$stylist/layout/const/array/container-query-type';

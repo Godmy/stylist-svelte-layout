@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createContainerQueryState from './state.svelte';
+	import createContainerQueryState from '$stylist/layout/component/molecule/container-query/state.svelte';
 	import type { RecipeContainerQuery } from '$stylist/layout/interface/recipe/container-query';
 
 	let props: RecipeContainerQuery = $props();

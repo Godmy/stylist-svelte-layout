@@ -1,4 +1,4 @@
-import Draggable from './index.svelte';
+import Draggable from '$stylist/layout/component/atom/draggable/index.svelte';
 import type { RecipeDraggable } from '$stylist/layout/interface/recipe/draggable';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

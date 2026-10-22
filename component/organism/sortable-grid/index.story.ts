@@ -1,4 +1,4 @@
-import SortableGrid from './index.svelte';
+import SortableGrid from '$stylist/layout/component/organism/sortable-grid/index.svelte';
 import type { RecipeSortableGrid } from '$stylist/layout/interface/recipe/sortable-grid';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { SPLIT_LAYOUT_GAP } from '$stylist/layout/const/array/split-layout-gap';

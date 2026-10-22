@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeHoverable } from '$stylist/layout/interface/recipe/hoverable';
-	import createHoverableState from './state.svelte';
+	import createHoverableState from '$stylist/layout/component/atom/hoverable/state.svelte';
 
 	let props: RecipeHoverable = $props();
 	const state = createHoverableState(() => props);

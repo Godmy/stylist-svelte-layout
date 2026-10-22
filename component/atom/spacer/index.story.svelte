@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Spacer from './index.svelte';
+	import Spacer from '$stylist/layout/component/atom/spacer/index.svelte';
 	import type { RecipeSpacer } from '$stylist/layout/interface/recipe/spacer';
 
 	// Render of index.story.ts: the spacer is only visible between neighbours laid out along its axis.

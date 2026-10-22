@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ContainerQuery from './index.svelte';
+	import ContainerQuery from '$stylist/layout/component/molecule/container-query/index.svelte';
 	import type { RecipeContainerQuery } from '$stylist/layout/interface/recipe/container-query';
 
 	// Render of index.story.ts: the children need @container rules to show the query breakpoint.

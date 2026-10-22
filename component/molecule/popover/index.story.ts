@@ -1,4 +1,4 @@
-import Popover from './index.svelte';
+import Popover from '$stylist/layout/component/molecule/popover/index.svelte';
 import type { RecipePopover } from '$stylist/layout/interface/recipe/popover';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ALIGNMENT } from '$stylist/layout/const/array/alignment';

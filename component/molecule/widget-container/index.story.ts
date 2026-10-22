@@ -1,4 +1,4 @@
-import WidgetContainer from './index.svelte';
+import WidgetContainer from '$stylist/layout/component/molecule/widget-container/index.svelte';
 import type { RecipeWidgetContainer } from '$stylist/layout/interface/recipe/widget-container';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';

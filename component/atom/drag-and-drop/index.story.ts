@@ -1,4 +1,4 @@
-import DragAndDrop from './index.svelte';
+import DragAndDrop from '$stylist/layout/component/atom/drag-and-drop/index.svelte';
 import type { RecipeDragAndDrop } from '$stylist/layout/interface/recipe/drag-and-drop';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeContainer } from '$stylist/layout/interface/recipe/container';
-	import createContainerState from './state.svelte';
+	import createContainerState from '$stylist/layout/component/atom/container/state.svelte';
 
 	let props: RecipeContainer = $props();
 	const state = createContainerState(() => props);

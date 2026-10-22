@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeDragAndDrop } from '$stylist/layout/interface/recipe/drag-and-drop';
-	import createDragAndDropState from './state.svelte';
+	import createDragAndDropState from '$stylist/layout/component/atom/drag-and-drop/state.svelte';
 
 	let props: RecipeDragAndDrop = $props();
 	const state = createDragAndDropState(() => props);

@@ -1,4 +1,4 @@
-import GradientBackground from './index.svelte';
+import GradientBackground from '$stylist/layout/component/molecule/gradient-background/index.svelte';
 import type { RecipeGradientBackground } from '$stylist/layout/interface/recipe/gradient-background';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_GRADIENT } from '$stylist/layout/const/array/gradient-mode';

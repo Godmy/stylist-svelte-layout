@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';
-	import createCenteredLayoutState from './state.svelte';
+	import createCenteredLayoutState from '$stylist/layout/component/molecule/centered-layout/state.svelte';
 	import type { RecipeCenteredLayout } from '$stylist/layout/interface/recipe/centered-layout';
 
 	let props: RecipeCenteredLayout = $props();

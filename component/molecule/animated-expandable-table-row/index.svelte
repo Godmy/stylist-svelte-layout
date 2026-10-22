@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createAnimatedExpandableTableRowState from './state.svelte';
+	import createAnimatedExpandableTableRowState from '$stylist/layout/component/molecule/animated-expandable-table-row/state.svelte';
 	import type { RecipeAnimatedExpandableTableRow } from '$stylist/layout/interface/recipe/animated-expandable-table-row';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 

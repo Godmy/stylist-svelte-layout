@@ -1,4 +1,4 @@
-import VerticalLayout from './index.svelte';
+import VerticalLayout from '$stylist/layout/component/molecule/vertical-layout/index.svelte';
 import type { RecipeVerticalLayout } from '$stylist/layout/interface/recipe/vertical-layout';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';

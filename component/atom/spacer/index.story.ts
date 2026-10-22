@@ -1,4 +1,4 @@
-import Spacer from './index.svelte';
+import Spacer from '$stylist/layout/component/atom/spacer/index.svelte';
 import type { RecipeSpacer } from '$stylist/layout/interface/recipe/spacer';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE_REM } from '$stylist/design-token/const/array/size-rem';

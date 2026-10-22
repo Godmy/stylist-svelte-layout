@@ -1,4 +1,4 @@
-import Grid from './index.svelte';
+import Grid from '$stylist/layout/component/atom/grid/index.svelte';
 import type { RecipeGridSvg } from '$stylist/layout/interface/recipe/grid-svg';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

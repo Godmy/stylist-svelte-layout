@@ -1,4 +1,4 @@
-import AnimatedExpandableTableRow from './index.svelte';
+import AnimatedExpandableTableRow from '$stylist/layout/component/molecule/animated-expandable-table-row/index.svelte';
 import type { RecipeAnimatedExpandableTableRow } from '$stylist/layout/interface/recipe/animated-expandable-table-row';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

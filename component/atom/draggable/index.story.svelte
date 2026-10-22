@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Draggable from './index.svelte';
+	import Draggable from '$stylist/layout/component/atom/draggable/index.svelte';
 	import type { RecipeDraggable } from '$stylist/layout/interface/recipe/draggable';
 
 	// Render of index.story.ts: a drag source and a drop target work together and report the payload.

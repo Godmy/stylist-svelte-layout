@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DragAndDrop from './index.svelte';
+	import DragAndDrop from '$stylist/layout/component/atom/drag-and-drop/index.svelte';
 	import type { RecipeDragAndDrop } from '$stylist/layout/interface/recipe/drag-and-drop';
 
 	// Render of index.story.ts: a drag source and a drop zone work together and log their events.

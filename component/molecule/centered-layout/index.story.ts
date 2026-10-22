@@ -1,4 +1,4 @@
-import CenteredLayout from './index.svelte';
+import CenteredLayout from '$stylist/layout/component/molecule/centered-layout/index.svelte';
 import type { RecipeCenteredLayout } from '$stylist/layout/interface/recipe/centered-layout';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { CENTERED_LAYOUT_AXIS } from '$stylist/layout/const/array/centered-layout-axis';

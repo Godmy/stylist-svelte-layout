@@ -1,4 +1,4 @@
-import HorizontalLayout from './index.svelte';
+import HorizontalLayout from '$stylist/layout/component/atom/horizontal-layout/index.svelte';
 import type { RecipeHorizontalLayout } from '$stylist/layout/interface/recipe/horizontal-layout';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';

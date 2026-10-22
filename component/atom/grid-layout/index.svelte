@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeGridLayout } from '$stylist/layout/interface/recipe/grid-layout';
-	import createGridLayoutState from './state.svelte';
+	import createGridLayoutState from '$stylist/layout/component/atom/grid-layout/state.svelte';
 
 	let props: RecipeGridLayout = $props();
 	const state = createGridLayoutState(() => props);

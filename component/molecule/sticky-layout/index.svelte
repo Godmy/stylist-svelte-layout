@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createStickyLayoutState from './state.svelte';
+	import createStickyLayoutState from '$stylist/layout/component/molecule/sticky-layout/state.svelte';
 	import type { RecipeStickyLayout } from '$stylist/layout/interface/recipe/sticky-layout';
 
 	let props: RecipeStickyLayout = $props();

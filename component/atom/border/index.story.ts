@@ -1,4 +1,4 @@
-import Border from './index.svelte';
+import Border from '$stylist/layout/component/atom/border/index.svelte';
 import type { RecipeBorder } from '$stylist/layout/interface/recipe/border';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_BORDER_STYLE } from '$stylist/layout/const/array/border-style';

@@ -1,4 +1,4 @@
-import Hoverable from './index.svelte';
+import Hoverable from '$stylist/layout/component/atom/hoverable/index.svelte';
 import type { RecipeHoverable } from '$stylist/layout/interface/recipe/hoverable';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

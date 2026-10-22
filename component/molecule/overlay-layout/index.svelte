@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createOverlayLayoutState from './state.svelte';
+	import createOverlayLayoutState from '$stylist/layout/component/molecule/overlay-layout/state.svelte';
 	import type { RecipeOverlayLayout } from '$stylist/layout/interface/recipe/overlay-layout';
 
 	let props: RecipeOverlayLayout = $props();

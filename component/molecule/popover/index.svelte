@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createPopoverState from './state.svelte';
+	import createPopoverState from '$stylist/layout/component/molecule/popover/state.svelte';
 	import type { RecipePopover } from '$stylist/layout/interface/recipe/popover';
 
 	let props: RecipePopover = $props();

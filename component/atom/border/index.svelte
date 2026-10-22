@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createBorderState from './state.svelte';
+	import createBorderState from '$stylist/layout/component/atom/border/state.svelte';
 	import type { RecipeBorder } from '$stylist/layout/interface/recipe/border';
 
 	let props: RecipeBorder = $props();

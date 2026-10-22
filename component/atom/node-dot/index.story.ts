@@ -1,4 +1,4 @@
-import NodeDot from './index.svelte';
+import NodeDot from '$stylist/layout/component/atom/node-dot/index.svelte';
 import type { RecipeNodeDot } from '$stylist/layout/interface/recipe/node-dot';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 
