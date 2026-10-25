@@ -13,39 +13,31 @@ export type {
 	LayoutHTMLAttributes
 } from './behavior';
 export type {
-	RecipeAnimatedExpandableTableRow,
 	RecipeAspectRatio,
 	RecipeBackground,
 	RecipeBorder,
+	RecipeCardsSection,
 	RecipeCenteredLayout,
-	RecipeClickable,
+	RecipeComparisonSection,
 	RecipeContainer,
 	RecipeContainerQuery,
+	RecipeDefinitionSection,
 	RecipeDivider,
-	RecipeDragAndDrop,
-	RecipeDraggable,
-	RecipeFocusable,
-	RecipeGradientBackground,
+	RecipeFeatureItems,
 	RecipeGrid,
-	RecipeGridItem,
-	RecipeGridLayout,
-	RecipeGridMolecule,
-	RecipeGridSvg,
-	RecipeHorizontalLayout,
-	RecipeHoverable,
-	RecipeNodeDot,
-	RecipeNumberedStep,
-	RecipeNumberedStepGrid,
+	RecipeHeroSection,
+	RecipeLanding,
+	RecipeLandingTemplate,
+	RecipeNavBar,
 	RecipeOverlayLayout,
-	RecipePopover,
-	RecipeSeparator,
-	RecipeSortableGrid,
-	RecipeSpacer,
+	RecipePageShell,
+	RecipeResultSection,
+	RecipeSectionHeading,
+	RecipeSiteNavigationDrawer,
 	RecipeSplitLayout,
 	RecipeStack,
-	RecipeStickyLayout,
-	RecipeVerticalLayout,
-	RecipeWidgetContainer
+	RecipeStepList,
+	RecipeStepsSection
 } from './recipe';
 export type {
 	DragContract,
@@ -53,7 +45,5 @@ export type {
 	SlotBadge,
 	SlotComposite,
 	SlotDimensionable,
-	SlotDivider,
-	SlotDragAndDrop,
-	SlotSortableGridItem
+	SlotDivider
 } from './slot';

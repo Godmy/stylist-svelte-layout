@@ -3,6 +3,5 @@ export {
 	ClassNamesManager,
 	GridManager,
 	ObjectManagerBackground,
-	ObjectManagerGesture,
-	ObjectManagerGradientBackground
+	ObjectManagerGesture
 } from './manager';

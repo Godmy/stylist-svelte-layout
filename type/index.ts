@@ -3,14 +3,12 @@ export type {
 	CenteredLayoutAxis,
 	ClassValue,
 	ContainerQueryType,
-	GradientDirection,
 	GridMoleculeJustify,
 	LayoutGravity,
 	LayoutLevel,
 	LayoutShape,
 	OverlayLayoutAlign,
 	SplitLayoutGap,
-	ThemeGradientBackgroundDirection,
 	TierContent,
 	TokenAlignment,
 	TokenAspectRatio,
@@ -20,7 +18,6 @@ export type {
 	TokenColumn,
 	TokenCursor,
 	TokenDensity,
-	TokenGradient,
 	TokenJustification,
 	TokenOrientation,
 	TokenShape,
@@ -28,7 +25,13 @@ export type {
 	TokenStackDirection,
 	TokenTrigger
 } from './alias';
-export type { NumberedStep } from './object';
+export type {
+	LandingCard,
+	LandingNav,
+	LandingSection,
+	LandingStep,
+	NavBarLink
+} from './object';
 export type { Preset } from './preset';
 export type {
 	AnyProperty,

@@ -12,6 +12,8 @@ export function createBackgroundState(getProps: () => RecipeBackground) {
 	const gradient = $derived(ObjectManagerBackground.resolveGradient(props));
 	const opacity = $derived(ObjectManagerBackground.resolveOpacity(props));
 	const variant = $derived(ObjectManagerBackground.resolveVariant(props));
+	const animated = $derived(background === 'gradient' && (props.animated ?? false));
+	const speed = $derived(props.speed ?? 15);
 
 	const styles = $derived(
 		ObjectManagerBackground.createInlineStyles({
@@ -27,8 +29,11 @@ export function createBackgroundState(getProps: () => RecipeBackground) {
 	);
 
 	const inlineStyle = $derived(
-		Object.entries(styles as Record<string, string | number>)
-			.map(([k, v]) => `${k}: ${v};`)
+		[
+			...Object.entries(styles as Record<string, string | number>).map(([k, v]) => `${k}: ${v};`),
+			animated ? `--bg-shift-duration: ${speed}s;` : null
+		]
+			.filter(Boolean)
 			.join(' ')
 	);
 
@@ -42,6 +47,8 @@ export function createBackgroundState(getProps: () => RecipeBackground) {
 			backgroundSize: _backgroundSize,
 			backgroundRepeat: _backgroundRepeat,
 			gradient: _gradient,
+			animated: _animated,
+			speed: _speed,
 			opacity: _opacity,
 			variant: _variant,
 			...rest
@@ -64,6 +71,9 @@ export function createBackgroundState(getProps: () => RecipeBackground) {
 		},
 		get variant() {
 			return variant;
+		},
+		get animated() {
+			return animated;
 		}
 	};
 }

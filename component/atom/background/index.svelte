@@ -7,7 +7,9 @@
 </script>
 
 <div
-	class={['layout-bg', props.class].filter(Boolean).join(' ')}
+	class={['layout-bg', state.animated && 'layout-bg--animated', props.class]
+		.filter(Boolean)
+		.join(' ')}
 	data-variant={state.variant}
 	style={state.inlineStyle}
 	{...state.restProps}
@@ -21,6 +23,27 @@
 	.layout-bg {
 		position: relative;
 		background-color: var(--bg-color, transparent);
+	}
+
+	.layout-bg--animated {
+		background-size: 400% 400%;
+		animation: layout-bg-shift var(--bg-shift-duration, 15s) ease infinite;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.layout-bg--animated {
+			animation: none;
+		}
+	}
+
+	@keyframes layout-bg-shift {
+		0%,
+		100% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
 	}
 
 	.layout-bg[data-variant='neutral'] {

@@ -7,8 +7,6 @@ export { CENTERED_LAYOUT_AXIS } from './centered-layout-axis';
 export { TOKEN_COLUMN } from './column';
 export { CONTAINER_QUERY_TYPE } from './container-query-type';
 export { TOKEN_DENSITY } from './density';
-export { GRADIENT_DIRECTION } from './gradient-direction';
-export { TOKEN_GRADIENT } from './gradient-mode';
 export { GRID_MOLECULE_JUSTIFY } from './grid-molecule-justify';
 export { TOKEN_IMAGE_FILTER } from './image-filter';
 export { ITEM_LAYOUT_GRAVITY } from './item-layout-gravity';

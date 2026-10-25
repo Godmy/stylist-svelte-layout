@@ -12,6 +12,10 @@ export interface RecipeBackground
 	backgroundSize?: 'cover' | 'contain' | 'auto' | string;
 	backgroundRepeat?: 'no-repeat' | 'repeat' | 'repeat-x' | 'repeat-y';
 	gradient?: string;
+	/** Slowly shifts a gradient background (`background: 'gradient'`). */
+	animated?: boolean;
+	/** Duration of one gradient shift cycle in seconds. */
+	speed?: number;
 	opacity?: number;
 	variant?: TokenColorTone;
 }

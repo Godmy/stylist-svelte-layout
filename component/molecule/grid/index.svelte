@@ -7,10 +7,10 @@
 
 	const GAP: Record<string, string> = {
 		none: '0',
-		sm: '0.5rem',
-		md: '1rem',
-		lg: '1.5rem',
-		xl: '2rem'
+		sm: 'var(--space-2)',
+		md: 'var(--space-4)',
+		lg: 'var(--space-6)',
+		xl: 'var(--space-8)'
 	};
 	const ALIGN: Record<string, string> = {
 		start: 'flex-start',
@@ -29,7 +29,7 @@
 
 	const cols = $derived(props.cols ?? 2);
 	const responsive = $derived(props.responsive ?? true);
-	const gap = $derived(GAP[props.gap ?? 'md'] ?? '1rem');
+	const gap = $derived(GAP[props.gap ?? 'md'] ?? 'var(--space-4)');
 	const align = $derived(ALIGN[props.alignItems ?? 'stretch'] ?? 'stretch');
 	const justify = $derived(JUSTIFY[props.justifyContent ?? 'start'] ?? 'flex-start');
 	const colsMd = $derived(Math.min(cols, 4));
@@ -53,7 +53,7 @@
 	.layout-grid {
 		display: grid;
 		grid-template-columns: repeat(var(--cols, 2), 1fr);
-		gap: var(--gap, 1rem);
+		gap: var(--gap, var(--space-4));
 		align-items: var(--align, stretch);
 		justify-content: var(--justify, flex-start);
 	}

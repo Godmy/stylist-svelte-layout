@@ -8,7 +8,10 @@ export function createDividerState(getProps: () => RecipeDivider) {
 	const orientation = $derived<TokenOrientation>(props.orientation ?? TOKEN_ORIENTATION[0]);
 	const align = $derived<TokenAlignment>((props.align as TokenAlignment | undefined) ?? 'center');
 	const dashed = $derived(props.dashed ?? false);
+	const decorative = $derived(props.decorative ?? false);
 	const isHorizontal = $derived(orientation === TOKEN_ORIENTATION[0]);
+	// A label is only drawn on a horizontal divider; otherwise the divider is a native <hr>.
+	const isLabelled = $derived(isHorizontal && Boolean(props.label));
 
 	const restProps = $derived.by(() => {
 		const {
@@ -17,6 +20,7 @@ export function createDividerState(getProps: () => RecipeDivider) {
 			align: _align,
 			dashed: _dashed,
 			label: _label,
+			decorative: _decorative,
 			...rest
 		} = props;
 		return rest;
@@ -32,8 +36,14 @@ export function createDividerState(getProps: () => RecipeDivider) {
 		get dashed() {
 			return dashed;
 		},
+		get decorative() {
+			return decorative;
+		},
 		get isHorizontal() {
 			return isHorizontal;
+		},
+		get isLabelled() {
+			return isLabelled;
 		},
 		get restProps() {
 			return restProps;

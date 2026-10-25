@@ -38,18 +38,18 @@
 		margin-inline: auto;
 		width: 100%;
 		max-width: var(--max-width, 100%);
-		padding-inline: 1rem;
+		padding-inline: var(--space-4);
 	}
 
 	@media (min-width: 640px) {
 		.layout-container {
-			padding-inline: 1.5rem;
+			padding-inline: var(--space-6);
 		}
 	}
 
 	@media (min-width: 1024px) {
 		.layout-container {
-			padding-inline: 2rem;
+			padding-inline: var(--space-8);
 		}
 	}
 </style>

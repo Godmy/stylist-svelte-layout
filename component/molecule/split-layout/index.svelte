@@ -7,10 +7,10 @@
 
 	const GAP: Record<string, string> = {
 		none: '0',
-		sm: '0.5rem',
-		md: '1rem',
-		lg: '1.5rem',
-		xl: '2rem'
+		sm: 'var(--space-2)',
+		md: 'var(--space-4)',
+		lg: 'var(--space-6)',
+		xl: 'var(--space-8)'
 	};
 	const PANEL_SIZE: Record<string, string> = {
 		'1/4': '25%',
@@ -22,7 +22,7 @@
 		'3/4': '75%'
 	};
 
-	const gap = $derived(GAP[state.gap] ?? '1rem');
+	const gap = $derived(GAP[state.gap] ?? 'var(--space-4)');
 	const primaryWidth = $derived(PANEL_SIZE[state.primarySize] ?? '66.666667%');
 	const secondaryWidth = $derived(PANEL_SIZE[state.secondarySize] ?? '33.333333%');
 </script>
@@ -53,7 +53,7 @@
 	.layout-split {
 		display: flex;
 		flex-direction: row;
-		gap: var(--gap, 1rem);
+		gap: var(--gap, var(--space-4));
 	}
 
 	.layout-split--vertical {

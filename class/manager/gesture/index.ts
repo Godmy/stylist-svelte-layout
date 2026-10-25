@@ -1,4 +1,3 @@
-import type { DragContract } from '$stylist/layout/interface/slot/drag-contract';
 import type { GestureContract } from '$stylist/layout/interface/slot/gesture-contract';
 
 export class ObjectManagerGesture {
@@ -50,25 +49,6 @@ export class ObjectManagerGesture {
 			onMouseUp: contract.onMouseUp,
 			onMouseEnter: contract.onMouseEnter,
 			onMouseLeave: contract.onMouseLeave
-		};
-	}
-
-	/**
-	 * Нормализует drag контракт
-	 */
-	static normalizeDragContract(contract: Partial<DragContract>): DragContract {
-		return {
-			...this.normalizeGestureContract(contract),
-			draggable: contract.draggable ?? true,
-			dropzone: contract.dropzone ?? false,
-			dragData: contract.dragData,
-			onDragStart: contract.onDragStart,
-			onDrag: contract.onDrag,
-			onDragEnd: contract.onDragEnd,
-			onDragEnter: contract.onDragEnter,
-			onDragLeave: contract.onDragLeave,
-			onDragOver: contract.onDragOver,
-			onDrop: contract.onDrop
 		};
 	}
 
