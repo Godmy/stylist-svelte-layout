@@ -16,15 +16,43 @@ export default {
 		footerShadow: true
 	},
 	controls: {
-		sticky: { type: 'boolean' },
-		stickyFooter: { type: 'boolean' },
-		fillHeight: { type: 'boolean' },
-		headerShadow: { type: 'boolean' },
-		footerShadow: { type: 'boolean' },
-		containerSize: { type: 'select', options: TOKEN_SIZE }
+		sticky: {
+			type: 'boolean',
+			label: 'Sticky header',
+			description: 'Keep the header on screen while scrolling.'
+		},
+		stickyFooter: {
+			type: 'boolean',
+			label: 'Sticky footer',
+			description: 'Keep the footer on screen as well.'
+		},
+		fillHeight: {
+			type: 'boolean',
+			label: 'Fill height',
+			description: 'Fill the parent and scroll the content inside.'
+		},
+		headerShadow: {
+			type: 'boolean',
+			label: 'Header shadow',
+			description: 'Elevation under the header.'
+		},
+		footerShadow: {
+			type: 'boolean',
+			label: 'Footer shadow',
+			description: 'Elevation above the footer.'
+		},
+		containerSize: {
+			type: 'select',
+			label: 'Container size',
+			description: 'Constrain header, main and footer to a Container.',
+			options: TOKEN_SIZE
+		},
+		class: { type: 'text', label: 'Class', description: 'Extra classes on the root element.' }
 	},
 	presets: {
 		Flat: { headerShadow: false, footerShadow: false },
-		Contained: { containerSize: 'md' }
+		Contained: { containerSize: 'md' },
+		'Document scroll': { fillHeight: false, stickyFooter: false },
+		Static: { sticky: false, stickyFooter: false }
 	}
 } satisfies ContractStory<RecipePageShell>;

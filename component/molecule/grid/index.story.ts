@@ -1,35 +1,67 @@
 import Grid from '$stylist/layout/component/molecule/grid/index.svelte';
 import type { RecipeGrid } from '$stylist/layout/interface/recipe/grid';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
-import { SPLIT_LAYOUT_GAP } from '$stylist/layout/const/array/split-layout-gap';
-import { ITEM_LAYOUT_GRAVITY } from '$stylist/layout/const/array/item-layout-gravity';
-import { GRID_MOLECULE_JUSTIFY } from '$stylist/layout/const/array/grid-molecule-justify';
+import { TOKEN_SPACE } from '$stylist/design-token/const/object/space';
 
-/** Responsive CSS grid with six demo tiles. */
+/** CSS grid with responsive columns. */
 export default {
 	component: Grid,
 	title: 'Grid',
-	description: 'Responsive CSS-grid helper for card collections.',
-	args: { cols: 3, gap: 'md', responsive: true, alignItems: 'stretch', justifyContent: 'start' },
+	description: 'CSS grid: column count, responsive collapse, --space-* gap and alignment.',
+	args: {
+		cols: 3,
+		gap: '4',
+		responsive: true,
+		alignItems: 'stretch',
+		justifyContent: 'start'
+	},
 	controls: {
-		cols: { type: 'number', min: 1, max: 4, step: 1 },
-		gap: { type: 'select', options: SPLIT_LAYOUT_GAP },
-		responsive: { type: 'boolean' },
-		// The grid maps every gravity except `baseline`.
+		cols: {
+			type: 'range',
+			label: 'Columns',
+			description: 'Column count at the widest breakpoint.',
+			min: 1,
+			max: 6,
+			step: 1
+		},
+		gap: {
+			type: 'select',
+			label: 'Gap',
+			description: 'Step of the --space-* scale.',
+			options: Object.keys(TOKEN_SPACE)
+		},
+		responsive: {
+			type: 'boolean',
+			label: 'Responsive',
+			description: 'Collapse to one column on small screens.'
+		},
 		alignItems: {
 			type: 'select',
-			options: ITEM_LAYOUT_GRAVITY.filter((gravity) => gravity !== 'baseline')
+			label: 'Align items',
+			description: 'Vertical alignment inside cells.',
+			options: ['start', 'center', 'end', 'stretch']
 		},
-		justifyContent: { type: 'select', options: GRID_MOLECULE_JUSTIFY }
+		justifyContent: {
+			type: 'select',
+			label: 'Justify content',
+			description: 'Distribution of the column tracks.',
+			options: ['start', 'center', 'end', 'between', 'around', 'evenly']
+		},
+		class: { type: 'text', label: 'Class', description: 'Extra classes on the root element.' }
 	},
-	presets: { TwoColumns: { cols: 2, gap: 'lg' }, Centered: { alignItems: 'center' } },
-	content: [1, 2, 3, 4, 5, 6].map((tile) => ({
+	presets: {
+		'Two columns': { cols: 2, gap: '6' },
+		'Four columns': { cols: 4, gap: '2' },
+		Fixed: { responsive: false },
+		Centered: { alignItems: 'center' }
+	},
+	content: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'].map((label) => ({
 		kind: 'element' as const,
 		tag: 'div',
 		attrs: {
 			style:
-				'border-radius: 0.75rem; border: 1px solid var(--color-border-primary); background-color: var(--color-background-secondary); padding: 1rem; font-size: 0.875rem; line-height: 1.25rem;'
+				'border: 1px dashed var(--color-border-primary); border-radius: var(--radius-1); padding: var(--space-2);'
 		},
-		children: [{ kind: 'text' as const, value: `Tile ${tile}` }]
+		children: [{ kind: 'text' as const, value: label }]
 	}))
 } satisfies ContractStory<RecipeGrid>;

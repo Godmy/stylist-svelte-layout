@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HtmlDiv from '$stylist/html/component/organism/div/index.svelte';
 	import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';
 	import createCenteredLayoutState from '$stylist/layout/component/molecule/centered-layout/state.svelte';
 	import type { RecipeCenteredLayout } from '$stylist/layout/interface/recipe/centered-layout';
@@ -10,7 +11,7 @@
 	const vertical = $derived(state.axis === 'both' || state.axis === TOKEN_ORIENTATION[1]);
 </script>
 
-<div
+<HtmlDiv
 	class={[
 		'layout-centered',
 		horizontal && 'layout-centered--h',
@@ -24,35 +25,35 @@
 	{...state.restProps}
 >
 	{#if state.maxWidth}
-		<div class="layout-centered__inner" style:--max-width={state.maxWidth}>
+		<HtmlDiv class="layout-centered__inner" style="--max-width: {state.maxWidth}">
 			{#if props.children}{@render props.children()}{/if}
-		</div>
+		</HtmlDiv>
 	{:else if props.children}{@render props.children()}{/if}
-</div>
+</HtmlDiv>
 
 <style>
-	.layout-centered {
-		display: flex;
-	}
-
-	.layout-centered--h {
-		justify-content: center;
-	}
-
-	.layout-centered--v {
-		align-items: center;
-	}
-
-	.layout-centered--fill-h {
-		height: 100%;
-	}
-
-	.layout-centered--fill-w {
-		width: 100%;
-	}
-
-	.layout-centered__inner {
-		width: 100%;
-		max-width: var(--max-width);
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-centered) {
+				display: flex;
+			}
+			:where(.layout-centered--h) {
+				justify-content: center;
+			}
+			:where(.layout-centered--v) {
+				align-items: center;
+			}
+			:where(.layout-centered--fill-h) {
+				height: 100%;
+			}
+			:where(.layout-centered--fill-w) {
+				width: 100%;
+			}
+			:where(.layout-centered__inner) {
+				width: 100%;
+				max-width: var(--max-width);
+			}
+		}
 	}
 </style>

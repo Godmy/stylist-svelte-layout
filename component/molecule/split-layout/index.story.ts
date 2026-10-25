@@ -1,32 +1,59 @@
 import SplitLayout from '$stylist/layout/component/molecule/split-layout/index.svelte';
 import type { RecipeSplitLayout } from '$stylist/layout/interface/recipe/split-layout';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
+import { TOKEN_SPACE } from '$stylist/design-token/const/object/space';
 import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';
-import { SPLIT_LAYOUT_GAP } from '$stylist/layout/const/array/split-layout-gap';
-import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';
 
-/** Two panes; index.story.svelte passes the primary and secondary snippets. */
+/** Two panes with sizes and responsive collapse. */
 export default {
 	component: SplitLayout,
 	title: 'SplitLayout',
-	description: 'Two-pane layout with configurable proportions.',
+	description:
+		'Primary and secondary panes with fractional sizes, --space-* gap and responsive stacking.',
 	args: {
-		direction: TOKEN_ORIENTATION[0],
-		gap: 'md',
+		gap: '4',
+		direction: 'horizontal',
 		primarySize: '2/3',
 		secondarySize: '1/3',
-		responsive: true
+		responsive: false
 	},
 	controls: {
-		direction: { type: 'select', options: TOKEN_ORIENTATION },
-		gap: { type: 'select', options: SPLIT_LAYOUT_GAP },
-		// Only the fractions 1/4 … 3/4 are mapped to pane widths.
-		primarySize: { type: 'select', options: TOKEN_SIZE.filter((size) => size.includes('/')) },
-		secondarySize: { type: 'select', options: TOKEN_SIZE.filter((size) => size.includes('/')) },
-		responsive: { type: 'boolean' }
+		gap: {
+			type: 'select',
+			label: 'Gap',
+			description: 'Step of the --space-* scale.',
+			options: Object.keys(TOKEN_SPACE)
+		},
+		direction: {
+			type: 'select',
+			label: 'Direction',
+			description: 'Side by side or stacked.',
+			options: TOKEN_ORIENTATION
+		},
+		primarySize: {
+			type: 'select',
+			label: 'Primary size',
+			description: 'Width share of the primary pane.',
+			options: ['1/4', '1/3', '2/5', '1/2', '3/5', '2/3', '3/4']
+		},
+		secondarySize: {
+			type: 'select',
+			label: 'Secondary size',
+			description: 'Width share of the secondary pane.',
+			options: ['1/4', '1/3', '2/5', '1/2', '3/5', '2/3', '3/4']
+		},
+		responsive: {
+			type: 'boolean',
+			label: 'Responsive',
+			description: 'Stack below 1024px, side by side above.'
+		},
+		class: { type: 'text', label: 'Class', description: 'Extra classes on the root element.' }
 	},
 	presets: {
 		Halves: { primarySize: '1/2', secondarySize: '1/2' },
-		Vertical: { direction: 'vertical' }
+		Sidebar: { primarySize: '3/4', secondarySize: '1/4' },
+		Vertical: { direction: 'vertical' },
+		Responsive: { responsive: true },
+		'Wide gap': { gap: '10' }
 	}
 } satisfies ContractStory<RecipeSplitLayout>;

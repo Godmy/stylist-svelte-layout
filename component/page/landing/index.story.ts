@@ -12,6 +12,7 @@ export default {
 	description:
 		'Landing page from an array of sections (hero, features, definition, steps, comparison, cards, result, custom).',
 	args: {
+		stickyNav: false,
 		nav: {
 			ariaLabel: 'Main navigation',
 			links: [
@@ -54,9 +55,20 @@ export default {
 				eyebrow: 'How it works',
 				title: 'Three steps',
 				steps: [
-					{ title: 'Choose', text: 'Pick the sections you need.' },
-					{ title: 'Fill', text: 'Pass your copy and images.' },
-					{ title: 'Publish', text: 'Render the page.' }
+					{ title: 'Choose', text: 'Pick a plan that fits your team and timeline.' },
+					{ title: 'Request', text: 'Leave a request with dates and the number of people.' },
+					{ title: 'Confirm', text: 'A manager confirms availability and books it.' }
+				]
+			},
+			{
+				kind: 'comparison',
+				ariaLabel: 'Comparison',
+				title: 'Compared with alternatives',
+				columns: ['Manual', 'Ours'],
+				criteria: ['Time', 'Consistency'],
+				rows: [
+					['Days', 'Minutes'],
+					['Varies', 'Same every time']
 				]
 			},
 			{
@@ -71,5 +83,62 @@ export default {
 			}
 		]
 	},
-	controls: { stickyNav: { type: 'boolean' } }
+	controls: {
+		stickyNav: {
+			type: 'boolean',
+			label: 'Sticky navigation',
+			description: 'Keep the navigation on screen while scrolling.'
+		},
+		nav: {
+			type: 'json',
+			label: 'Navigation',
+			description: 'Navigation label and links (snippets via presets).',
+			example: { ariaLabel: '', links: [{ href: '', label: '' }] }
+		},
+		sections: {
+			type: 'json',
+			label: 'Sections',
+			description:
+				'Sections by kind: hero, features, definition, steps, comparison, cards, result.',
+			example: [{ kind: 'hero', title: '', lead: '' }]
+		},
+		class: { type: 'text', label: 'Class', description: 'Extra classes on the root element.' }
+	},
+	presets: {
+		Sticky: { stickyNav: true },
+		'Hero only': {
+			sections: [
+				{ kind: 'hero', title: 'Just a hero', lead: 'One section.', imageSrc: image, imageAlt: '' }
+			]
+		},
+		'Steps grid': {
+			sections: [
+				{
+					kind: 'steps',
+					ariaLabel: 'Steps',
+					title: 'Steps grid',
+					steps: [
+						{ title: 'Choose', text: 'Pick a plan that fits your team and timeline.' },
+						{ title: 'Request', text: 'Leave a request with dates and the number of people.' },
+						{ title: 'Confirm', text: 'A manager confirms availability and books it.' }
+					]
+				}
+			]
+		},
+		Cards: {
+			sections: [
+				{
+					kind: 'cards',
+					ariaLabel: 'Cases',
+					eyebrow: 'Cases',
+					title: 'Cards section',
+					items: [
+						{ kicker: 'One', title: 'First', body: 'Body.', result: 'Outcome', image, alt: '' },
+						{ kicker: 'Two', title: 'Second', body: 'Body.', result: 'Outcome', image, alt: '' }
+					]
+				}
+			]
+		}
+	},
+	layout: 'fullscreen'
 } satisfies ContractStory<RecipeLanding>;

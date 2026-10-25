@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HtmlDiv from '$stylist/html/component/organism/div/index.svelte';
 	import createOverlayLayoutState from '$stylist/layout/component/molecule/overlay-layout/state.svelte';
 	import type { RecipeOverlayLayout } from '$stylist/layout/interface/recipe/overlay-layout';
 
@@ -38,11 +39,11 @@
 		`${OVERLAY_POSITIONS[align as OverlayAlign] ?? ''} z-index: ${zIndex};`;
 </script>
 
-<div class={['layout-overlay', props.class].filter(Boolean).join(' ')} {...state.restProps}>
+<HtmlDiv class={['layout-overlay', props.class].filter(Boolean).join(' ')} {...state.restProps}>
 	{@render props.base()}
 
 	{#if props.overlay}
-		<div
+		<HtmlDiv
 			class={[
 				'layout-overlay__layer',
 				!state.overlayPointerEvents && 'layout-overlay__layer--no-pointer'
@@ -52,12 +53,12 @@
 			style={overlayStyle}
 		>
 			{@render props.overlay()}
-		</div>
+		</HtmlDiv>
 	{/if}
 
 	{#if props.overlays}
-		{#each props.overlays as layer}
-			<div
+		{#each props.overlays as layer, index (index)}
+			<HtmlDiv
 				class={[
 					'layout-overlay__layer',
 					!(layer.pointerEvents ?? false) && 'layout-overlay__layer--no-pointer'
@@ -67,21 +68,24 @@
 				style={overlayLayerStyle(layer.align ?? 'fill', layer.zIndex ?? 10)}
 			>
 				{@render layer.content()}
-			</div>
+			</HtmlDiv>
 		{/each}
 	{/if}
-</div>
+</HtmlDiv>
 
 <style>
-	.layout-overlay {
-		position: relative;
-	}
-
-	.layout-overlay__layer {
-		position: absolute;
-	}
-
-	.layout-overlay__layer--no-pointer {
-		pointer-events: none;
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-overlay) {
+				position: relative;
+			}
+			:where(.layout-overlay__layer) {
+				position: absolute;
+			}
+			:where(.layout-overlay__layer--no-pointer) {
+				pointer-events: none;
+			}
+		}
 	}
 </style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HtmlDiv from '$stylist/html/component/organism/div/index.svelte';
 	import PageShell from '$stylist/layout/component/template/page-shell/index.svelte';
 	import NavBar from '$stylist/layout/component/molecule/nav-bar/index.svelte';
 	import SiteNavigationDrawer from '$stylist/layout/component/organism/site-navigation-drawer/index.svelte';
@@ -15,9 +16,13 @@
 	let menuOpen = $state(false);
 </script>
 
-<PageShell sticky={stickyNav} {footer} class="landing-template {className}">
+<PageShell
+	sticky={stickyNav}
+	{footer}
+	class={['layout-landing-template', className].filter(Boolean).join(' ')}
+>
 	{#snippet header()}
-		<div class="landing-template__header">
+		<HtmlDiv class="layout-landing-template__header">
 			<NavBar
 				ariaLabel={nav.ariaLabel}
 				links={nav.links}
@@ -29,7 +34,7 @@
 				{menuOpen}
 				onMenuOpen={() => (menuOpen = true)}
 			/>
-		</div>
+		</HtmlDiv>
 		<SiteNavigationDrawer
 			ariaLabel={nav.ariaLabel}
 			open={menuOpen}
@@ -43,20 +48,23 @@
 </PageShell>
 
 <style>
-	:global(.landing-template) {
-		container-type: inline-size;
-		min-height: 100vh;
-	}
-
-	.landing-template__header {
-		width: min(100% - var(--space-8), var(--landing-max-width, 1180px));
-		margin: 0 auto;
-		padding-top: var(--space-5);
-	}
-
-	@container (max-width: 680px) {
-		.landing-template__header {
-			width: min(100% - var(--space-4), var(--landing-max-width, 1180px));
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-landing-template) {
+				container-type: inline-size;
+				min-height: 100vh;
+			}
+			:where(.layout-landing-template__header) {
+				width: min(100% - var(--content-gutter, 2rem), var(--content-page, 73.75rem));
+				margin: 0 auto;
+				padding-top: var(--space-5);
+			}
+			@container (max-width: 680px) {
+				:where(.layout-landing-template__header) {
+					width: min(100% - var(--content-gutter, 2rem) / 2, var(--content-page, 73.75rem));
+				}
+			}
 		}
 	}
 </style>

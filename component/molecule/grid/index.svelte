@@ -1,17 +1,11 @@
 <script lang="ts">
+	import HtmlDiv from '$stylist/html/component/organism/div/index.svelte';
 	import type { RecipeGrid } from '$stylist/layout/interface/recipe/grid';
 	import { GridManager } from '$stylist/layout/class/manager/grid';
 
 	let props: RecipeGrid = $props();
 	const restProps = $derived.by(() => GridManager.filterRestProps(props));
 
-	const GAP: Record<string, string> = {
-		none: '0',
-		sm: 'var(--space-2)',
-		md: 'var(--space-4)',
-		lg: 'var(--space-6)',
-		xl: 'var(--space-8)'
-	};
 	const ALIGN: Record<string, string> = {
 		start: 'flex-start',
 		center: 'center',
@@ -29,54 +23,51 @@
 
 	const cols = $derived(props.cols ?? 2);
 	const responsive = $derived(props.responsive ?? true);
-	const gap = $derived(GAP[props.gap ?? 'md'] ?? 'var(--space-4)');
+	const gap = $derived(`var(--space-${props.gap ?? '4'})`);
 	const align = $derived(ALIGN[props.alignItems ?? 'stretch'] ?? 'stretch');
 	const justify = $derived(JUSTIFY[props.justifyContent ?? 'start'] ?? 'flex-start');
 	const colsMd = $derived(Math.min(cols, 4));
 </script>
 
-<div
-	class={['layout-grid', responsive ? 'layout-grid--responsive' : undefined, props.class]
+<HtmlDiv
+	class={['layout-grid', responsive && 'layout-grid--responsive', props.class]
 		.filter(Boolean)
 		.join(' ')}
-	style:--cols={cols}
-	style:--cols-md={colsMd}
-	style:--gap={gap}
-	style:--align={align}
-	style:--justify={justify}
+	style="--cols: {cols}; --cols-md: {colsMd}; --gap: {gap}; --align: {align}; --justify: {justify}"
 	{...restProps}
 >
 	{#if props.children}{@render props.children()}{/if}
-</div>
+</HtmlDiv>
 
 <style>
-	.layout-grid {
-		display: grid;
-		grid-template-columns: repeat(var(--cols, 2), 1fr);
-		gap: var(--gap, var(--space-4));
-		align-items: var(--align, stretch);
-		justify-content: var(--justify, flex-start);
-	}
-
-	.layout-grid--responsive {
-		grid-template-columns: 1fr;
-	}
-
-	@media (min-width: 640px) {
-		.layout-grid--responsive {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 768px) {
-		.layout-grid--responsive {
-			grid-template-columns: repeat(var(--cols-md, 2), 1fr);
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.layout-grid--responsive {
-			grid-template-columns: repeat(var(--cols, 2), 1fr);
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-grid) {
+				display: grid;
+				grid-template-columns: repeat(var(--cols, 2), 1fr);
+				gap: calc(var(--gap, var(--space-4)) * var(--density-scale, 1));
+				align-items: var(--align, stretch);
+				justify-content: var(--justify, flex-start);
+			}
+			:where(.layout-grid--responsive) {
+				grid-template-columns: 1fr;
+			}
+			@media (min-width: 640px) {
+				:where(.layout-grid--responsive) {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+			@media (min-width: 768px) {
+				:where(.layout-grid--responsive) {
+					grid-template-columns: repeat(var(--cols-md, 2), 1fr);
+				}
+			}
+			@media (min-width: 1024px) {
+				:where(.layout-grid--responsive) {
+					grid-template-columns: repeat(var(--cols, 2), 1fr);
+				}
+			}
 		}
 	}
 </style>

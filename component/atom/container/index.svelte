@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HtmlDiv from '$stylist/html/component/organism/div/index.svelte';
 	import type { RecipeContainer } from '$stylist/layout/interface/recipe/container';
 	import createContainerState from '$stylist/layout/component/atom/container/state.svelte';
 
@@ -25,31 +26,34 @@
 	const maxWidth = $derived(MAX_WIDTH[state.size] ?? '100%');
 </script>
 
-<div
+<HtmlDiv
 	class={['layout-container', props.class].filter(Boolean).join(' ')}
-	style:--max-width={maxWidth}
+	style="--max-width: {maxWidth}"
 	{...state.restProps}
 >
 	{#if props.children}{@render props.children()}{/if}
-</div>
+</HtmlDiv>
 
 <style>
-	.layout-container {
-		margin-inline: auto;
-		width: 100%;
-		max-width: var(--max-width, 100%);
-		padding-inline: var(--space-4);
-	}
-
-	@media (min-width: 640px) {
-		.layout-container {
-			padding-inline: var(--space-6);
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.layout-container {
-			padding-inline: var(--space-8);
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-container) {
+				margin-inline: auto;
+				width: 100%;
+				max-width: var(--max-width, 100%);
+				padding-inline: calc(var(--space-4) * var(--density-scale, 1));
+			}
+			@media (min-width: 640px) {
+				:where(.layout-container) {
+					padding-inline: calc(var(--space-6) * var(--density-scale, 1));
+				}
+			}
+			@media (min-width: 1024px) {
+				:where(.layout-container) {
+					padding-inline: calc(var(--space-8) * var(--density-scale, 1));
+				}
+			}
 		}
 	}
 </style>

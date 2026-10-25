@@ -3,18 +3,32 @@ import type { RecipeAspectRatio } from '$stylist/layout/interface/recipe/aspect-
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ASPECT_RATIO } from '$stylist/layout/const/map/aspect-ratio';
 
-/** Container that keeps a constant aspect ratio for its content. */
+/** Frame that keeps a constant aspect ratio. */
 export default {
 	component: AspectRatio,
 	title: 'AspectRatio',
-	description: 'Maintains a consistent aspect ratio for content containers',
-	args: { ratio: TOKEN_ASPECT_RATIO.video, style: 'max-width: 32rem' },
+	description: 'Frame that keeps a constant aspect ratio for media or placeholders.',
+	args: {
+		ratio: TOKEN_ASPECT_RATIO.video,
+		style: 'max-width: 32rem'
+	},
 	controls: {
-		ratio: { type: 'select', options: Object.values(TOKEN_ASPECT_RATIO) }
+		ratio: {
+			type: 'select',
+			label: 'Ratio',
+			description: 'Width-to-height ratio token.',
+			options: Object.values(TOKEN_ASPECT_RATIO)
+		},
+		class: { type: 'text', label: 'Class', description: 'Extra classes on the root element.' }
 	},
 	presets: {
 		Square: { ratio: TOKEN_ASPECT_RATIO.square },
-		Portrait: { ratio: TOKEN_ASPECT_RATIO.portrait }
+		Video: { ratio: TOKEN_ASPECT_RATIO.video },
+		WideVideo: { ratio: TOKEN_ASPECT_RATIO.wideVideo },
+		Portrait: { ratio: TOKEN_ASPECT_RATIO.portrait },
+		Landscape: { ratio: TOKEN_ASPECT_RATIO.landscape },
+		Golden: { ratio: TOKEN_ASPECT_RATIO.golden },
+		Photo: { ratio: TOKEN_ASPECT_RATIO.photo }
 	},
 	content: [
 		{
@@ -22,7 +36,7 @@ export default {
 			tag: 'div',
 			attrs: {
 				style:
-					'display: flex; height: 100%; align-items: center; justify-content: center; border-radius: 0.25rem; background-image: linear-gradient(135deg, var(--color-primary-500), var(--color-info-500)); font-weight: 600; color: var(--color-text-inverse);'
+					'border: 1px dashed var(--color-border-primary); border-radius: var(--radius-1); padding: var(--space-3); height: 100%; box-sizing: border-box;'
 			},
 			children: [{ kind: 'text', value: 'Aspect ratio content' }]
 		}

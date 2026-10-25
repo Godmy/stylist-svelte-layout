@@ -137,7 +137,8 @@ site's private block. `LandingNav` describes the header and drawer.
 
 The only consumer, `wbd/component/template/wbd-landing-page` (weoracle.online), now renders
 `page/landing`; its props are unchanged, private WBD blocks (public polls, application form,
-intro) are `custom` sections. `--landing-max-width` sets the content width (default 1180px).
+intro) are `custom` sections. Sections are as wide as the theme's `--content-page` (73.75rem)
+minus `--content-gutter`.
 
 ## Remaining entities and data flow
 
@@ -148,10 +149,25 @@ intro) are `custom` sections. `--landing-max-width` sets the content width (defa
 - Landing blocks: SectionHeading, StepList, FeatureItems, NavBar, HeroSection, DefinitionSection,
   StepsSection, ComparisonSection, CardsSection, ResultSection, SiteNavigationDrawer.
 - Page: Landing (typed `LandingSection[]`).
-- Fluid heading sizes (`clamp(…cqw…)`) stay literal: the scale has fixed steps only.
+- Fluid heading sizes keep `clamp(min, …cqw, max)`; min/max use `--font-size-*` steps when the
+  nearest step is within 2px, otherwise literals (hero title 2.25rem–4.35rem and mobile 2.35rem,
+  section heading max 3.5rem).
+- Shadows use the theme elevations (`--elevation-level1`, `--elevation-modal`, `--elevation-card`
+  for media); the drawer backdrop uses `--color-backdrop`. Literal values remain only as fallbacks.
+- Blocks render through `html` wrappers (HtmlSection, HtmlDiv, HtmlHr…). Their CSS is layout
+  only (grid, gaps, section padding, media frames) and sits in `@layer layout` behind `:where()`;
+  every block declares `@layer html, layout;`, as does the html skin stylesheet. So the skin
+  supplies typography, consumer classes override both, and load order does not matter.
+- Text size, line height, font and colour are inherited (skin, theme, `--<block>-*` hooks with
+  `inherit` fallbacks); derived sizes (step numbers, feature values, nav links) are in `em`, so
+  the preview panel's font size and line height change every block. Checked by
+  `test/unit/style-layer`.
+- Section padding and grid gaps are `calc(var(--space-N) * var(--density-scale, 1))`
+  (compact 0.75, comfortable 1); drawer links pad with `--density-block`/`--density-inline`.
 - Spacing in component CSS uses the theme scale `--space-*`, `--font-size-*`, `--radius-*`;
-  no `--spacing-*`, `--layout-spacing-*` or `--border-radius-*`. Grid and SplitLayout still
-  accept `sm|md|lg|xl` gaps mapped to `--space-2/4/6/8`; Stack takes scale steps directly.
+  no `--spacing-*`, `--layout-spacing-*` or `--border-radius-*`. Stack, Grid and SplitLayout take
+  `gap` as a `--space-*` step (`'4'`, `'6'`…); Grid and SplitLayout used `sm|md|lg|xl` before
+  (`sm` → `'2'`, `md` → `'4'`, `lg` → `'6'`, `xl` → `'8'`).
 - `interface/behavior/{clickable,focusable,draggable,…}` stay here: many recipes across
   domains compose them.
 - `class/manager/gesture` normalises click contracts for `button/function/state/clickable`.

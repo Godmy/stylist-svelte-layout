@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HtmlDiv from '$stylist/html/component/organism/div/index.svelte';
 	import LandingTemplate from '$stylist/layout/component/template/landing-template/index.svelte';
 	import HeroSection from '$stylist/layout/component/organism/hero-section/index.svelte';
 	import FeatureItems from '$stylist/layout/component/molecule/feature-items/index.svelte';
@@ -12,9 +13,14 @@
 	let { nav, sections, footer, stickyNav, class: className = '' }: RecipeLanding = $props();
 </script>
 
-<LandingTemplate {nav} {footer} {stickyNav} class="layout-landing {className}">
+<LandingTemplate
+	{nav}
+	{footer}
+	{stickyNav}
+	class={['layout-landing', className].filter(Boolean).join(' ')}
+>
 	{#each sections as section, index (section.id ?? index)}
-		<div class="layout-landing__section">
+		<HtmlDiv class="layout-landing__section">
 			{#if section.kind === 'hero'}
 				{@const { kind: _kind, ...props } = section}
 				<HeroSection {...props} />
@@ -37,21 +43,25 @@
 				{@const { kind: _kind, ...props } = section}
 				<ResultSection {...props} />
 			{:else}
-				<div id={section.id} class={section.class}>{@render section.render()}</div>
+				<HtmlDiv id={section.id} class={section.class}>{@render section.render()}</HtmlDiv>
 			{/if}
-		</div>
+		</HtmlDiv>
 	{/each}
 </LandingTemplate>
 
 <style>
-	.layout-landing__section {
-		width: min(100% - var(--space-8), var(--landing-max-width, 1180px));
-		margin: 0 auto;
-	}
-
-	@container (max-width: 680px) {
-		.layout-landing__section {
-			width: min(100% - var(--space-4), var(--landing-max-width, 1180px));
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-landing__section) {
+				width: min(100% - var(--content-gutter, 2rem), var(--content-page, 73.75rem));
+				margin: 0 auto;
+			}
+			@container (max-width: 680px) {
+				:where(.layout-landing__section) {
+					width: min(100% - var(--content-gutter, 2rem) / 2, var(--content-page, 73.75rem));
+				}
+			}
 		}
 	}
 </style>

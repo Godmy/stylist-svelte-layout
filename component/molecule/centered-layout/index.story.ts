@@ -3,31 +3,55 @@ import type { RecipeCenteredLayout } from '$stylist/layout/interface/recipe/cent
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { CENTERED_LAYOUT_AXIS } from '$stylist/layout/const/array/centered-layout-axis';
 
-/** Centers content along one or both axes. */
+/** Centres content along one or both axes. */
 export default {
 	component: CenteredLayout,
 	title: 'CenteredLayout',
-	description: 'Centers content along one or both axes.',
+	description: 'Centres content along one or both axes, optionally within a maximum width.',
 	args: {
 		axis: 'both',
 		fillHeight: true,
 		fillWidth: true,
-		style: 'height: 12rem; border: 1px solid var(--color-border-primary); border-radius: 0.5rem;'
+		maxWidth: '',
+		style:
+			'height: 12rem; border: 1px solid var(--color-border-primary); border-radius: var(--radius-2);'
 	},
 	controls: {
-		axis: { type: 'select', options: CENTERED_LAYOUT_AXIS },
-		fillHeight: { type: 'boolean' },
-		fillWidth: { type: 'boolean' },
-		maxWidth: { type: 'text' }
+		axis: {
+			type: 'select',
+			label: 'Axis',
+			description: 'Centre horizontally, vertically or both.',
+			options: CENTERED_LAYOUT_AXIS
+		},
+		fillHeight: {
+			type: 'boolean',
+			label: 'Fill height',
+			description: 'Take the full height of the parent.'
+		},
+		fillWidth: {
+			type: 'boolean',
+			label: 'Fill width',
+			description: 'Take the full width of the parent.'
+		},
+		maxWidth: {
+			type: 'text',
+			label: 'Max width',
+			description: 'CSS max width of the centred content, e.g. 20rem.'
+		},
+		class: { type: 'text', label: 'Class', description: 'Extra classes on the root element.' }
 	},
-	presets: { Horizontal: { axis: 'horizontal' }, Vertical: { axis: 'vertical' } },
+	presets: {
+		Horizontal: { axis: 'horizontal' },
+		Vertical: { axis: 'vertical' },
+		'Max width': { maxWidth: '16rem' }
+	},
 	content: [
 		{
 			kind: 'element',
 			tag: 'div',
 			attrs: {
 				style:
-					'border: 1px solid var(--color-border-primary); border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.875rem;'
+					'border: 1px dashed var(--color-border-primary); border-radius: var(--radius-1); padding: var(--space-3);'
 			},
 			children: [{ kind: 'text', value: 'Centered content' }]
 		}

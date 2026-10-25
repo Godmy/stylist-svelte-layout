@@ -26,33 +26,33 @@
 </svelte:element>
 
 <style>
-	.layout-stack {
-		display: flex;
-		gap: var(--stack-gap);
-		align-items: var(--stack-align);
-		justify-content: var(--stack-justify);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.layout-stack--column {
-		flex-direction: column;
-	}
-
-	.layout-stack--row {
-		flex-direction: row;
-	}
-
-	.layout-stack--wrap {
-		flex-wrap: wrap;
-	}
-
-	.layout-stack--column.layout-stack--fill {
-		height: 100%;
-	}
-
-	.layout-stack--row.layout-stack--fill {
-		width: 100%;
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-stack) {
+				display: flex;
+				gap: calc(var(--stack-gap) * var(--density-scale, 1));
+				align-items: var(--stack-align);
+				justify-content: var(--stack-justify);
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			:where(.layout-stack--column) {
+				flex-direction: column;
+			}
+			:where(.layout-stack--row) {
+				flex-direction: row;
+			}
+			:where(.layout-stack--wrap) {
+				flex-wrap: wrap;
+			}
+			:where(.layout-stack--column.layout-stack--fill) {
+				height: 100%;
+			}
+			:where(.layout-stack--row.layout-stack--fill) {
+				width: 100%;
+			}
+		}
 	}
 </style>

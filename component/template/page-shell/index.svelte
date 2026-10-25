@@ -1,5 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import HtmlDiv from '$stylist/html/component/organism/div/index.svelte';
+	import HtmlHeader from '$stylist/html/component/organism/header/index.svelte';
+	import HtmlMain from '$stylist/html/component/organism/main/index.svelte';
+	import HtmlFooter from '$stylist/html/component/organism/footer/index.svelte';
 	import type { RecipePageShell } from '$stylist/layout/interface/recipe/page-shell';
 	import createPageShellState from '$stylist/layout/component/template/page-shell/state.svelte';
 	import Container from '$stylist/layout/component/atom/container/index.svelte';
@@ -16,7 +20,7 @@
 	{/if}
 {/snippet}
 
-<div
+<HtmlDiv
 	class={[
 		'layout-page-shell',
 		state.sticky && 'layout-page-shell--sticky',
@@ -29,7 +33,7 @@
 	{...state.restProps}
 >
 	{#if props.header}
-		<header
+		<HtmlHeader
 			class={[
 				'layout-page-shell__header',
 				state.headerShadow && 'layout-page-shell__header--shadow'
@@ -38,15 +42,15 @@
 				.join(' ')}
 		>
 			{@render region(props.header)}
-		</header>
+		</HtmlHeader>
 	{/if}
 
-	<main class="layout-page-shell__main">
+	<HtmlMain class="layout-page-shell__main">
 		{@render region(props.children)}
-	</main>
+	</HtmlMain>
 
 	{#if props.footer}
-		<footer
+		<HtmlFooter
 			class={[
 				'layout-page-shell__footer',
 				state.footerShadow && 'layout-page-shell__footer--shadow'
@@ -55,52 +59,51 @@
 				.join(' ')}
 		>
 			{@render region(props.footer)}
-		</footer>
+		</HtmlFooter>
 	{/if}
-</div>
+</HtmlDiv>
 
 <style>
-	.layout-page-shell {
-		display: flex;
-		flex-direction: column;
-		min-height: 100%;
-	}
-
-	.layout-page-shell--fill {
-		height: 100%;
-	}
-
-	.layout-page-shell__header,
-	.layout-page-shell__footer {
-		flex-shrink: 0;
-	}
-
-	.layout-page-shell--sticky .layout-page-shell__header {
-		position: sticky;
-		top: 0;
-		z-index: 10;
-	}
-
-	.layout-page-shell--sticky-footer .layout-page-shell__footer {
-		position: sticky;
-		bottom: 0;
-		z-index: 10;
-	}
-
-	.layout-page-shell__header--shadow {
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-	}
-
-	.layout-page-shell__footer--shadow {
-		box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
-	}
-
-	.layout-page-shell__main {
-		flex: 1;
-		min-height: 0;
-	}
-
-	.layout-page-shell--fill .layout-page-shell__main {
-		overflow-y: auto;
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-page-shell) {
+				display: flex;
+				flex-direction: column;
+				min-height: 100%;
+			}
+			:where(.layout-page-shell--fill) {
+				height: 100%;
+			}
+			:where(.layout-page-shell__header),
+			:where(.layout-page-shell__footer) {
+				flex-shrink: 0;
+			}
+			:where(.layout-page-shell--sticky > .layout-page-shell__header) {
+				position: sticky;
+				top: 0;
+				z-index: var(--z-index-docked, 10);
+				background: var(--page-shell-header-bg, var(--color-background-primary));
+			}
+			:where(.layout-page-shell--sticky-footer > .layout-page-shell__footer) {
+				position: sticky;
+				bottom: 0;
+				z-index: var(--z-index-docked, 10);
+				background: var(--page-shell-footer-bg, var(--color-background-primary));
+			}
+			:where(.layout-page-shell__header--shadow) {
+				box-shadow: var(--elevation-level1, 0 1px 3px rgba(0, 0, 0, 0.1));
+			}
+			:where(.layout-page-shell__footer--shadow) {
+				box-shadow: var(--elevation-level1, 0 -1px 3px rgba(0, 0, 0, 0.1));
+			}
+			:where(.layout-page-shell__main) {
+				flex: 1;
+				min-height: 0;
+			}
+			:where(.layout-page-shell--fill > .layout-page-shell__main) {
+				overflow-y: auto;
+			}
+		}
 	}
 </style>

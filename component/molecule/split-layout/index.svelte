@@ -1,17 +1,11 @@
 <script lang="ts">
+	import HtmlDiv from '$stylist/html/component/organism/div/index.svelte';
 	import createSplitLayoutState from '$stylist/layout/component/molecule/split-layout/state.svelte';
 	import type { RecipeSplitLayout } from '$stylist/layout/interface/recipe/split-layout';
 
 	let props: RecipeSplitLayout = $props();
 	const state = createSplitLayoutState(() => props);
 
-	const GAP: Record<string, string> = {
-		none: '0',
-		sm: 'var(--space-2)',
-		md: 'var(--space-4)',
-		lg: 'var(--space-6)',
-		xl: 'var(--space-8)'
-	};
 	const PANEL_SIZE: Record<string, string> = {
 		'1/4': '25%',
 		'1/3': '33.333333%',
@@ -22,12 +16,12 @@
 		'3/4': '75%'
 	};
 
-	const gap = $derived(GAP[state.gap] ?? 'var(--space-4)');
+	const gap = $derived(`var(--space-${state.gap})`);
 	const primaryWidth = $derived(PANEL_SIZE[state.primarySize] ?? '66.666667%');
 	const secondaryWidth = $derived(PANEL_SIZE[state.secondarySize] ?? '33.333333%');
 </script>
 
-<div
+<HtmlDiv
 	class={[
 		'layout-split',
 		state.direction === 'vertical' && 'layout-split--vertical',
@@ -36,65 +30,59 @@
 	]
 		.filter(Boolean)
 		.join(' ')}
-	style:--gap={gap}
-	style:--primary-width={primaryWidth}
-	style:--secondary-width={secondaryWidth}
+	style="--gap: {gap}; --primary-width: {primaryWidth}; --secondary-width: {secondaryWidth}"
 	{...state.restProps}
 >
-	<div class="layout-split__primary">
+	<HtmlDiv class="layout-split__primary">
 		{@render props.primary()}
-	</div>
-	<div class="layout-split__secondary">
+	</HtmlDiv>
+	<HtmlDiv class="layout-split__secondary">
 		{@render props.secondary()}
-	</div>
-</div>
+	</HtmlDiv>
+</HtmlDiv>
 
 <style>
-	.layout-split {
-		display: flex;
-		flex-direction: row;
-		gap: var(--gap, var(--space-4));
-	}
-
-	.layout-split--vertical {
-		flex-direction: column;
-	}
-
-	.layout-split--vertical .layout-split__primary,
-	.layout-split--vertical .layout-split__secondary {
-		flex-basis: auto;
-	}
-
-	.layout-split__primary {
-		flex: 0 1 var(--primary-width);
-		min-width: 0;
-	}
-
-	.layout-split__secondary {
-		flex: 0 1 var(--secondary-width);
-		min-width: 0;
-	}
-
-	.layout-split--responsive {
-		flex-direction: column;
-	}
-
-	.layout-split--responsive .layout-split__primary,
-	.layout-split--responsive .layout-split__secondary {
-		flex-basis: auto;
-	}
-
-	@media (min-width: 1024px) {
-		.layout-split--responsive {
-			flex-direction: row;
-		}
-
-		.layout-split--responsive .layout-split__primary {
-			flex-basis: var(--primary-width);
-		}
-
-		.layout-split--responsive .layout-split__secondary {
-			flex-basis: var(--secondary-width);
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer layout {
+		:global {
+			:where(.layout-split) {
+				display: flex;
+				flex-direction: row;
+				gap: calc(var(--gap, var(--space-4)) * var(--density-scale, 1));
+			}
+			:where(.layout-split--vertical) {
+				flex-direction: column;
+			}
+			:where(.layout-split--vertical .layout-split__primary),
+			:where(.layout-split--vertical .layout-split__secondary) {
+				flex-basis: auto;
+			}
+			:where(.layout-split__primary) {
+				flex: 0 1 var(--primary-width);
+				min-width: 0;
+			}
+			:where(.layout-split__secondary) {
+				flex: 0 1 var(--secondary-width);
+				min-width: 0;
+			}
+			:where(.layout-split--responsive) {
+				flex-direction: column;
+			}
+			:where(.layout-split--responsive .layout-split__primary),
+			:where(.layout-split--responsive .layout-split__secondary) {
+				flex-basis: auto;
+			}
+			@media (min-width: 1024px) {
+				:where(.layout-split--responsive) {
+					flex-direction: row;
+				}
+				:where(.layout-split--responsive .layout-split__primary) {
+					flex-basis: var(--primary-width);
+				}
+				:where(.layout-split--responsive .layout-split__secondary) {
+					flex-basis: var(--secondary-width);
+				}
+			}
 		}
 	}
 </style>
