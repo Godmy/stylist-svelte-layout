@@ -25,6 +25,7 @@ export type {
 	RecipeDivider,
 	RecipeFeatureItems,
 	RecipeGrid,
+	RecipeHeroBanner,
 	RecipeHeroSection,
 	RecipeLanding,
 	RecipeLandingTemplate,

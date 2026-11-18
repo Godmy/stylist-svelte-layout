@@ -11,6 +11,7 @@ export type { RecipeDefinitionSection } from './definition-section';
 export type { RecipeDivider } from './divider';
 export type { RecipeFeatureItems } from './feature-items';
 export type { RecipeGrid } from './grid';
+export type { RecipeHeroBanner } from './hero-banner';
 export type { RecipeHeroSection } from './hero-section';
 export type { RecipeLanding } from './landing';
 export type { RecipeLandingTemplate } from './landing-template';

@@ -22,6 +22,7 @@ export {
 	CardsSection,
 	ComparisonSection,
 	DefinitionSection,
+	HeroBanner,
 	HeroSection,
 	ResultSection,
 	SiteNavigationDrawer,
