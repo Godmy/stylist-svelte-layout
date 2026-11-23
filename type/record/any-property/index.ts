@@ -1,3 +1,3 @@
 export type AnyProperty = {
-	[key: string]: any;
+	[key: string]: unknown;
 };
