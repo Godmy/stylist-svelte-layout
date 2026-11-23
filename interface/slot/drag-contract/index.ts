@@ -3,7 +3,7 @@ import type { GestureContract } from '$stylist/layout/interface/slot/gesture-con
 export interface DragContract extends GestureContract {
 	draggable: boolean;
 	dropzone: boolean;
-	dragData?: any;
+	dragData?: unknown;
 	onDragStart?: (event: DragEvent) => void;
 	onDrag?: (event: DragEvent) => void;
 	onDragEnd?: (event: DragEvent) => void;

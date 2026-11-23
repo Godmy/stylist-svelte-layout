@@ -5,7 +5,7 @@ import type { DragContract } from '$stylist/layout/interface/slot/drag-contract'
  */
 export interface BehaviorDraggable extends Partial<DragContract> {
 	/** Данные для передачи при drag */
-	dragData?: any;
+	dragData?: unknown;
 	/** Показывать handle для перетаскивания */
 	showHandle?: boolean;
 	/** Курсор при перетаскивании */
