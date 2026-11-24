@@ -4,10 +4,11 @@
 	import HtmlStrong from '$stylist/html/component/atom/strong/index.svelte';
 	import HtmlSpan from '$stylist/html/component/atom/span/index.svelte';
 	import type { RecipeStepList } from '$stylist/layout/interface/recipe/step-list';
+	import createStepListComponentState from '$stylist/layout/component/molecule/step-list/state.svelte';
 
 	let { steps, columns = 1, class: className = '' }: RecipeStepList = $props();
 
-	const items = $derived(steps.map((step) => (typeof step === 'string' ? { title: step } : step)));
+	const state = createStepListComponentState(() => ({ steps: steps }));
 </script>
 
 <HtmlOl
@@ -16,7 +17,7 @@
 		.join(' ')}
 	style="--step-list-columns: {columns}"
 >
-	{#each items as step, index (index)}
+	{#each state.items as step, index (index)}
 		<HtmlLi class="layout-step-list__item">
 			{#if step.text}
 				<HtmlStrong class="layout-step-list__title">{step.title}</HtmlStrong>

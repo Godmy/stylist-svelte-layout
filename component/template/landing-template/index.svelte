@@ -4,6 +4,7 @@
 	import NavBar from '$stylist/layout/component/molecule/nav-bar/index.svelte';
 	import SiteNavigationDrawer from '$stylist/layout/component/organism/site-navigation-drawer/index.svelte';
 	import type { RecipeLandingTemplate } from '$stylist/layout/interface/recipe/landing-template';
+	import createLandingTemplateComponentState from '$stylist/layout/component/template/landing-template/state.svelte';
 
 	let {
 		nav,
@@ -13,7 +14,7 @@
 		class: className = ''
 	}: RecipeLandingTemplate = $props();
 
-	let menuOpen = $state(false);
+	const state = createLandingTemplateComponentState();
 </script>
 
 <PageShell
@@ -31,17 +32,17 @@
 				languageControl={nav.languageControl}
 				themeToggle={nav.themeToggle}
 				menuLabel={nav.menuLabel}
-				{menuOpen}
-				onMenuOpen={() => (menuOpen = true)}
+				menuOpen={state.menuOpen}
+				onMenuOpen={() => (state.menuOpen = true)}
 			/>
 		</HtmlDiv>
 		<SiteNavigationDrawer
 			ariaLabel={nav.ariaLabel}
-			open={menuOpen}
+			open={state.menuOpen}
 			links={nav.links}
 			brand={nav.brand}
 			closeLabel={nav.closeLabel}
-			onClose={() => (menuOpen = false)}
+			onClose={() => (state.menuOpen = false)}
 		/>
 	{/snippet}
 	{@render children()}
