@@ -45,6 +45,5 @@ export type {
 	GestureContract,
 	SlotBadge,
 	SlotComposite,
-	SlotDimensionable,
-	SlotDivider
+	SlotDimensionable
 } from './slot';

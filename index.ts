@@ -136,6 +136,5 @@ export type {
 	RecipeStepsSection,
 	SlotBadge,
 	SlotComposite,
-	SlotDimensionable,
-	SlotDivider
+	SlotDimensionable
 } from './interface';
