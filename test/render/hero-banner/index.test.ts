@@ -1,4 +1,4 @@
-import { render, cleanup, fireEvent } from '@testing-library/svelte';
+import { render, cleanup } from '@testing-library/svelte';
 import { afterEach, expect, test, vi } from 'vitest';
 import Hero from '$stylist/layout/component/organism/hero-banner/index.svelte';
 afterEach(() => {
