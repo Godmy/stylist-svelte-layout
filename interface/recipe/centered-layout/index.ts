@@ -1,7 +1,10 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { Snippet } from 'svelte';
 import type { LayoutHTMLAttributes } from '$stylist/layout/interface/behavior/layout-html-attributes';
 import type { CenteredLayoutAxis } from '$stylist/layout/type/alias/centered-layout-axis';
-export interface RecipeCenteredLayout extends LayoutHTMLAttributes<HTMLDivElement> {
+export interface RecipeCenteredLayout extends ComputeIntersectAll<
+	[LayoutHTMLAttributes<HTMLDivElement>]
+> {
 	class?: string;
 	children: Snippet;
 	axis?: CenteredLayoutAxis;

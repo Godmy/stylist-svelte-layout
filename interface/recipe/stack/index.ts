@@ -1,8 +1,9 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { Snippet } from 'svelte';
 import type { LayoutHTMLAttributes } from '$stylist/layout/interface/behavior/layout-html-attributes';
 import type { TokenStackDirection } from '$stylist/layout/type/alias/stack-direction';
 import type { TOKEN_SPACE } from '$stylist/design-token/const/object/space';
-export interface RecipeStack extends LayoutHTMLAttributes<HTMLElement> {
+export interface RecipeStack extends ComputeIntersectAll<[LayoutHTMLAttributes<HTMLElement>]> {
 	class?: string;
 	children?: Snippet;
 	/** Rendered element; a list stack uses `ul`/`ol`, a page region `section`/`nav`. */

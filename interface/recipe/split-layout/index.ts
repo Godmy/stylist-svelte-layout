@@ -1,9 +1,12 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { Snippet } from 'svelte';
 import type { LayoutHTMLAttributes } from '$stylist/layout/interface/behavior/layout-html-attributes';
 import type { TOKEN_SPACE } from '$stylist/design-token/const/object/space';
 import type { TokenOrientation } from '$stylist/layout/type/alias/orientation';
 import type { TOKEN_SIZE } from '$stylist/design-token/const/array/size';
-export interface RecipeSplitLayout extends LayoutHTMLAttributes<HTMLDivElement> {
+export interface RecipeSplitLayout extends ComputeIntersectAll<
+	[LayoutHTMLAttributes<HTMLDivElement>]
+> {
 	class?: string;
 	primary: Snippet;
 	secondary: Snippet;

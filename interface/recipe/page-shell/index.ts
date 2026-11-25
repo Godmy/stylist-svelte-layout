@@ -1,7 +1,10 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { Snippet } from 'svelte';
 import type { LayoutHTMLAttributes } from '$stylist/layout/interface/behavior/layout-html-attributes';
 import type { TokenSize } from '$stylist/design-token/type/alias/size';
-export interface RecipePageShell extends LayoutHTMLAttributes<HTMLDivElement> {
+export interface RecipePageShell extends ComputeIntersectAll<
+	[LayoutHTMLAttributes<HTMLDivElement>]
+> {
 	class?: string;
 	/** Page content, rendered in <main>. */
 	children: Snippet;

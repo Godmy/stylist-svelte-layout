@@ -1,7 +1,8 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { Snippet } from 'svelte';
 import type { TOKEN_SPACE } from '$stylist/design-token/const/object/space';
 import type { LayoutHTMLAttributes } from '$stylist/layout/interface/behavior/layout-html-attributes';
-export interface RecipeGrid extends LayoutHTMLAttributes<HTMLDivElement> {
+export interface RecipeGrid extends ComputeIntersectAll<[LayoutHTMLAttributes<HTMLDivElement>]> {
 	children: Snippet;
 	class?: string;
 	cols?: number;
